@@ -23,22 +23,23 @@ const StyledCard = styled.div<
   margin: ${({ margin }) => margin};
 `;
 
-const TimelineBox: React.FC<TimelineBoxProps> = ({
-                                               children,
-                                               width,
-                                               height,
-                                               borderRadius,
-                                               margin,
+const StyledBox = styled.article`
+float:left;
+display: inline;
+`
+
+const TimelineBox: React.FC = ({
                                            }) => {
     return (
-        <StyledCard
-            width={width}
-            height={height}
-            borderRadius={borderRadius}
-            margin={margin}
-        >
-            {children}
-        </StyledCard>
+        <StyledBox>
+            <h3>hahahaha</h3>
+            <ul>
+                <li>hahxa</li>
+                <li>haha</li>
+                <li>haha</li>
+                <li>haha</li>
+            </ul>
+        </StyledBox>
     );
 };
 

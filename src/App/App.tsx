@@ -1,18 +1,15 @@
 import React from "react";
-import { Button } from "../UI/Button";
-import FeedCard from "../UI/FeedCard";
-import BottomNav from "../UI/BottomNav";
-import FeedCardView from "./Component/FeedCardComponent";
 import MainWrapper from "../UI/mainWrapper";
+import TopNav from "../UI/TopNav";
+import TimelineBox from "../UI/TimelineBox";
+import TitleBar from "../UI/TitleBar";
+
 
 const App = () => {
   return (
     <>
-      <MainWrapper>
-        <FeedCardView></FeedCardView>
-        <FeedCardView></FeedCardView>
-        <FeedCardView></FeedCardView>
-      </MainWrapper>
+          <TopNav></TopNav>
+        <TitleBar></TitleBar>
     </>
   );
 };

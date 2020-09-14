@@ -20,7 +20,11 @@ font-size:12px;
 display:block;
 padding:5px 0;
 border-right:1px solid #ddd;
-text-decoration:none;
+
+&:hover {
+border-color:#ddd;
+background:#eee;
+} 
 `
 
 const TopNav: React.FC<TopNavProps> = ({
@@ -32,6 +36,11 @@ const TopNav: React.FC<TopNavProps> = ({
         <TopNavlist> haha </TopNavlist>
         <TopNavlist> haha </TopNavlist>
         <TopNavlist> haha </TopNavlist>
+        <TopNavlist> haha </TopNavlist>
+        <TopNavlist> haha </TopNavlist>
+        <TopNavlist> haha </TopNavlist>
+
+
     </StyledUl>
     )
 }
