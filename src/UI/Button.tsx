@@ -12,7 +12,7 @@ interface ButtonProps {
   disabled?: boolean;
 }
 
-const YanawaButton = styled.button<
+const Button = styled.button<
   Pick<ButtonProps, "width" | "borderRadius" | "color" | "margin">
 >`
   width: ${({ width }) => width};
@@ -40,7 +40,7 @@ const YanawaButton = styled.button<
   }
 `;
 
-export const Button: React.FC<ButtonProps> = ({
+export const styleButton: React.FC<ButtonProps> = ({
   children,
   width,
   borderRadius,
@@ -50,7 +50,7 @@ export const Button: React.FC<ButtonProps> = ({
   disabled,
 }) => {
   return (
-    <YanawaButton
+    <Button
       width={width}
       borderRadius={borderRadius}
       color={color}
@@ -59,6 +59,6 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
     >
       {children}
-    </YanawaButton>
+    </Button>
   );
 };
