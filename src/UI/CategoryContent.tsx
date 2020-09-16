@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 interface CategoryContentProps {
   Value: {
-    Date: String;
-    Title: String;
-    Name: String;
+    date: String;
+    title: String;
+    name: String;
   };
 }
 
@@ -15,7 +15,7 @@ const StyledBox = styled.div`
 `;
 
 const CategoryContentBox: React.FC<CategoryContentProps> = ({ Value }) => {
-  return <StyledBox></StyledBox>;
+  return <StyledBox><h2>{Value.date}</h2></StyledBox>;
 };
 
 export default CategoryContentBox;

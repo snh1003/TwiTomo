@@ -1,10 +1,11 @@
 import React from "react";
 import MainWrapper from "../UI/mainWrapper";
 import TopNav from "../UI/TopNav";
-import TimelineBox from "../UI/TimelineBox";
-import TitleBar from "../UI/TitleBar";
+
 import CategoryBox from "../UI/CategoryWrapper";
 import CategoryContentBox from "../UI/CategoryContent";
+import FeedCardView from "./Component/FeedCardComponent";
+import ContentBox from "../UI/ContentBox";
 const App = () => {
   const fakedata = {
     date: "1990-90-90",
@@ -14,12 +15,13 @@ const App = () => {
   return (
     <>
       <CategoryBox>
-        <CategoryContentBox>haha</CategoryContentBox>
-
-        <CategoryContentBox>hahdfasffa</CategoryContentBox>
-        <CategoryContentBox>haha</CategoryContentBox>
-        <CategoryContentBox>haha</CategoryContentBox>
-        <CategoryContentBox>haha</CategoryContentBox>
+        <CategoryContentBox Value={fakedata}></CategoryContentBox>
+        <CategoryContentBox Value={fakedata}></CategoryContentBox>
+        <CategoryContentBox Value={fakedata}></CategoryContentBox>
+        <CategoryContentBox Value={fakedata}></CategoryContentBox>
+        <CategoryContentBox Value={fakedata}></CategoryContentBox>
+        <FeedCardView></FeedCardView>
+        <ContentBox></ContentBox>
       </CategoryBox>
       <TopNav></TopNav>
     </>
