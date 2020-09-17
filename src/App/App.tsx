@@ -13,7 +13,8 @@ const App = () => {
     name: "name"
   };
   return (
-    <>
+
+      <MainWrapper>
       <CategoryBox>
         <CategoryContentBox Value={fakedata}></CategoryContentBox>
         <CategoryContentBox Value={fakedata}></CategoryContentBox>
@@ -24,7 +25,7 @@ const App = () => {
         <ContentBox></ContentBox>
       </CategoryBox>
       <TopNav></TopNav>
-    </>
+        </MainWrapper>
   );
 };
 
