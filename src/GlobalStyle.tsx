@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import theme from "./theme";
-//미정
+
 const GlobalStyle = createGlobalStyle`
   *, *:before, *:after {
 
