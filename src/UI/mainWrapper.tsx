@@ -17,6 +17,8 @@ const StyleForm = styled.div<Pick<mainWrapperProps, "width" | "height">>`
   position: absolute;
 `;
 
+
+
 const MainWrapper: React.FC<mainWrapperProps> = ({
   children,
   width,

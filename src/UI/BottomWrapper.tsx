@@ -8,7 +8,7 @@ interface bottomWrapperProps {
     type?: string;
 }
 
-const StyleForm = styled.div<Pick<mainWrapperProps, "width" | "height">>`
+const StyleForm = styled.div<Pick<bottomWrapperProps, "width" | "height">>`
   display: flex;
   flex-direction: column;
   padding: 8rem;
@@ -18,7 +18,7 @@ const StyleForm = styled.div<Pick<mainWrapperProps, "width" | "height">>`
   position: absolute;
 `;
 
-const BottomWrapper: React.FC<mainWrapperProps> = ({
+const BottomWrapper: React.FC<bottomWrapperProps> = ({
                                                      children,
                                                      width,
                                                      height,
