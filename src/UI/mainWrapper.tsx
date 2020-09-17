@@ -11,7 +11,7 @@ const StyleForm = styled.div<Pick<mainWrapperProps, "width" | "height">>`
   display: flex;
   flex-direction: column;
   padding: 8rem;
-  width: 200px;
+  width: ${(props) => props.theme.Platform.mobile};
   height: 400px;
   background: pink;
   position: absolute;
