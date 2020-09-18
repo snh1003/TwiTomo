@@ -7,17 +7,14 @@ interface mainWrapperProps {
   height?: string;
 }
 
-const StyleForm = styled.div<Pick<mainWrapperProps, "width" | "height">>`
+const StyleForm = styled.section<Pick<mainWrapperProps, "width" | "height">>`
   display: flex;
   flex-direction: column;
-  padding: 8rem;
-  width: ${(props) => props.theme.Platform.mobile};
-  height: 400px;
-  background: pink;
+  width: 470px;
+  height: 767px;
   position: absolute;
+  border: solid thin;
 `;
-
-
 
 const MainWrapper: React.FC<mainWrapperProps> = ({
   children,
