@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../theme";
+import TagBox from "./Tag";
 
 interface FeedCardProps {
   children: React.ReactNode;
@@ -24,12 +25,6 @@ const StyledCard = styled.article<
   border-radius: "3px";
 `;
 
-const StyledTag = styled.article`
-  text-align: center;
-  border-radius: 8px;
-  background: red;
-  margin: 3px;
-`;
 
 const StyledText = styled.text`
   grid-column: span 6;
@@ -59,8 +54,8 @@ const FeedCard: React.FC<FeedCardProps> = ({
       borderRadius={borderRadius}
       margin={margin}
     >
-      <StyledTag>sd</StyledTag> <StyledTag>sd</StyledTag>{" "}
-      <StyledTag>sd</StyledTag>
+      <TagBox>sd</TagBox> <TagBox>sd</TagBox>{" "}
+      <TagBox>sd</TagBox>
       <StyledText>타이틀입니다</StyledText>
       <StyledDate>1일 후 예정</StyledDate>
     </StyledCard>
