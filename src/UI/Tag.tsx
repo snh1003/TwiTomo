@@ -12,8 +12,9 @@ interface TagProps {
 const StyledTag = styled.article`
   text-align: center;
   border-radius: 8px;
-  background: red;
-  margin: 3px;
+  background: ${(props) => props.theme.main.base};
+  margin: 3px 3px 3px 14px;
+  color: white;
 `;
 
 const TagBox: React.FC<TagProps> = ({
