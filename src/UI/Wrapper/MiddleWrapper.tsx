@@ -6,8 +6,11 @@ interface MiddleWrapperProps {
 }
 
 const StyleForm = styled.article`
-  flex: 5;
+display: flex;
+flex-direction : column;
+  flex: 5 1 70% ;
   width: 470px;
+  justify-content: center;
 `;
 
 const MiddleWrapper: React.FC<MiddleWrapperProps> = ({ children }) => {

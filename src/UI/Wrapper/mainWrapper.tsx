@@ -14,6 +14,8 @@ const StyleForm = styled.section<Pick<mainWrapperProps, "width" | "height">>`
   height: 767px;
   position: absolute;
   border: solid thin;
+  
+  background : ${(props) => props.theme.main.background}
 `;
 
 const MainWrapper: React.FC<mainWrapperProps> = ({

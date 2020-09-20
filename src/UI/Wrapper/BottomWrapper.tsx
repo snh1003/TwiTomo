@@ -1,28 +1,44 @@
 import React from "react";
 import styled from "styled-components";
+import { Home } from "@styled-icons/boxicons-regular/Home"
+import {Pencil} from "@styled-icons/boxicons-solid/Pencil"
 
 interface bottomWrapperProps {
-  children: React.ReactNode;
   width?: string;
   height?: string;
   type?: string;
 }
 
 const StyleForm = styled.article<Pick<bottomWrapperProps, "width" | "height">>`
-  flex: 1;
+  flex: 1 1 10% ;
+  display: flex;
   width: 470px;
-  background: blue;
+  justify-content : center;
+    align-items: center;
+  background: ${(props) => props.theme.main.base};
+
 `;
 
+const FlexHome = styled(Home)`
+flex : 1;
+color : white;
+`
+const FlexPencil = styled(Pencil)`
+flex : 1;
+color : white;
+`
+
+
+
+
 const BottomWrapper: React.FC<bottomWrapperProps> = ({
-  children,
   width,
   height,
   type,
 }) => {
   return (
     <StyleForm width={width} height={height}>
-      {children}
+      <FlexHome size = "45"/><FlexPencil size = "45"/>
     </StyleForm>
   );
 };
