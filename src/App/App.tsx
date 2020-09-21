@@ -10,9 +10,11 @@ const App = () => {
     };
     return (
         <>
+            <BrowserRouter>
             <Switch>
-                <Route path="/Feed" component={FeedComponent}></Route>
+                <Route path='/Feed' component={FeedComponent}/>
             </Switch>
+            </BrowserRouter>
         </>
     );
 }
