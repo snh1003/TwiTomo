@@ -1,32 +1,19 @@
 import React from "react";
-import MainWrapper from "../UI/mainWrapper";
-import TopNav from "../UI/TopNav";
+import { Link, Route, BrowserRouter, Switch } from "react-router-dom";
 
-import CategoryBox from "../UI/CategoryWrapper";
-import CategoryContentBox from "../UI/CategoryContent";
-import FeedCardView from "./Component/FeedCardComponent";
-import ContentBox from "../UI/ContentBox";
+import FeedComponent from "./Component/FeedComponent";
 const App = () => {
-  const fakedata = {
-    date: "1990-90-90",
-    title: "test",
-    name: "name"
-  };
-  return (
-
-      <MainWrapper>
-      <CategoryBox>
-        <CategoryContentBox Value={fakedata}></CategoryContentBox>
-        <CategoryContentBox Value={fakedata}></CategoryContentBox>
-        <CategoryContentBox Value={fakedata}></CategoryContentBox>
-        <CategoryContentBox Value={fakedata}></CategoryContentBox>
-        <CategoryContentBox Value={fakedata}></CategoryContentBox>
-        <FeedCardView></FeedCardView>
-        <ContentBox></ContentBox>
-      </CategoryBox>
-      <TopNav></TopNav>
-        </MainWrapper>
-  );
-};
-
+    const fakedata = {
+        date: "1990-90-90",
+        title: "test",
+        name: "name"
+    };
+    return (
+        <>
+            <Switch>
+                <Route path="/Feed" component={FeedComponent}></Route>
+            </Switch>
+        </>
+    );
+}
 export default App;
