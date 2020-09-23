@@ -13,7 +13,7 @@ const StyleForm = styled.article`
   flex: 2 1 15%;
   width: 470px;
   display: grid;
-  grid-template-rows: 2fr 2fr;
+  grid-template-rows: 5rem 5rem;
   grid-template-columns: repeat(6, 1fr);
 `;
 // &:nth-child(1) {
@@ -25,11 +25,8 @@ const StyleForm = styled.article`
 //   background: yellow;
 // }
 const StyledTop = styled.div`
- 
     align-self : center;
   &:nth-child(1) {
-
-
   margin-left: 50px;
   margin-top: 10px;
   font-size : 30px;
@@ -37,7 +34,8 @@ const StyledTop = styled.div`
     grid-column-end: 5;
   }
   &:nth-child(2) {  
-  background: blue;
+  padding-top: 30px;
+  box-sizing: border-box;
     grid-column-start: 5;
     grid-column-end: 6;
   }
