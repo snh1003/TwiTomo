@@ -10,7 +10,7 @@ interface bottomWrapperProps {
 }
 
 const StyleForm = styled.article<Pick<bottomWrapperProps, "width" | "height">>`
-  flex: 1 1 10% ;
+  flex: 1 0 10%;
   display: flex;
   width: 470px;
   justify-content : center;
