@@ -8,7 +8,7 @@ interface MiddleWrapperProps {
 const StyleForm = styled.article`
 display: flex;
 flex-direction : column;
-  flex: 5 1 70% ;
+  flex: 5 1 75%;
   width: 470px;
   justify-content: center;
 `;
