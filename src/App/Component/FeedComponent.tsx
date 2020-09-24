@@ -6,13 +6,19 @@ import FeedCard from "../../UI/FeedCard";
 import BottomWrapper from "../../UI/Wrapper/BottomWrapper";
 
 const FeedComponent = () => {
-    return (
-        <MainWrapper>
-            <TopWrapper>df</TopWrapper>
-            <MiddleWrapper> <FeedCard>sdf</FeedCard> <FeedCard>sdf</FeedCard> <FeedCard>sdf</FeedCard> <FeedCard>sdf</FeedCard></MiddleWrapper>
-            <BottomWrapper></BottomWrapper>
-        </MainWrapper>
-    );
+  return (
+    <MainWrapper>
+      <TopWrapper>df</TopWrapper>
+      <MiddleWrapper>
+        {" "}
+        <FeedCard>sdf</FeedCard> <FeedCard>sdf</FeedCard>{" "}
+        <FeedCard>sdf</FeedCard>
+        <FeedCard>sdf</FeedCard> <FeedCard>sdf</FeedCard>{" "}
+        <FeedCard>sdf</FeedCard>
+      </MiddleWrapper>
+      <BottomWrapper></BottomWrapper>
+    </MainWrapper>
+  );
 };
 
 export default FeedComponent;

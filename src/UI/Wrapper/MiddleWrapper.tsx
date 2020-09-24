@@ -7,10 +7,16 @@ interface MiddleWrapperProps {
 
 const StyleForm = styled.article`
   display: flex;
-  flex-direction : column;
+  flex-direction: column;
   flex: 5 1 75%;
   width: 470px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
   justify-content: flex-start;
+  overflow: auto;
 `;
 
 const MiddleWrapper: React.FC<MiddleWrapperProps> = ({ children }) => {
