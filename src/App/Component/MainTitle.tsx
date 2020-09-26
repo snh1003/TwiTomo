@@ -5,7 +5,7 @@ import MiddleWrapper from "../../UI/Wrapper/MiddleWrapper";
 import FeedCard from "../../UI/FeedCard";
 import BottomWrapper from "../../UI/Wrapper/BottomWrapper";
 
-const FeedComponent = () => {
+const MainTitle = () => {
     return (
         <MainWrapper>
             <TopWrapper>df</TopWrapper>
@@ -15,4 +15,4 @@ const FeedComponent = () => {
     );
 };
 
-export default FeedComponent;
+export default MainTitle;
