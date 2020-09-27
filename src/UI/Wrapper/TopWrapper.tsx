@@ -50,6 +50,7 @@ const StyledMenu = styled.div`
 const StyledImage = styled.img`
   width: 85px;
   height: 85px;
+  border-radius: 50px;
 `;
 const StyledSetting = styled(Settings)`
   margin-left: 20px;
