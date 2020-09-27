@@ -46,7 +46,6 @@ const StyledDate = styled.text`
 `;
 
 const FeedCard: React.FC<FeedCardProps> = ({
-  children,
   width,
   height,
   borderRadius,
