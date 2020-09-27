@@ -11,23 +11,24 @@ interface ButtonProps {
   onClick?: () => void;
   disabled?: boolean;
 }
-
+//
 const Button = styled.button<
   Pick<ButtonProps, "width" | "borderRadius" | "color" | "margin">
 >`
-  width: ${({ width }) => width};
-  border-radius: ${({ borderRadius }) => borderRadius};
-  color: ${({ color }) => color};
-  margin: ${({ margin }) => margin};
+margin-top : 10%;
+  height: 80px;
+  width: 95%;
+  align-self: center;
+  border-radius: 50px;
   border: 0;
   outline: 0;
-  box-shadow: -3px -3px 30px ${theme.main.bright},
-    5px 5px 20px ${theme.main.dark};
-  font-size: 1rem;
+  box-shadow: 5px 5px 20px ${theme.main.dark};
+  font-size: 2rem;
+  color: white;
   font-weight: 550;
-  padding: 1rem;
   cursor: pointer;
   transition: all 0.1s ease-in-out;
+  background: linear-gradient( to Right top, #EEC762 10%, #F03A53 50%, #364CED);
 
   &:hover {
     box-shadow: -2px -2px 5px ${theme.main.bright},
@@ -40,7 +41,7 @@ const Button = styled.button<
   }
 `;
 
-export const styleButton: React.FC<ButtonProps> = ({
+const YanawaButton: React.FC<ButtonProps> = ({
   children,
   width,
   borderRadius,
@@ -50,6 +51,7 @@ export const styleButton: React.FC<ButtonProps> = ({
   disabled,
 }) => {
   return (
+
     <Button
       width={width}
       borderRadius={borderRadius}
@@ -60,5 +62,8 @@ export const styleButton: React.FC<ButtonProps> = ({
     >
       {children}
     </Button>
+
   );
 };
+
+export default YanawaButton
