@@ -27,12 +27,13 @@ margin-top : 10%;
   color: white;
   font-weight: 550;
   cursor: pointer;
-  transition: all 0.1s ease-in-out;
+  transition: all 0.3s ease-in-out;
   background: linear-gradient( to Right top, #EEC762 10%, #F03A53 50%, #364CED);
 
   &:hover {
     box-shadow: -2px -2px 5px ${theme.main.bright},
       2px 2px 5px ${theme.main.dark};
+       transform: translateY(0.1875em);
   }
 
   &:active {
