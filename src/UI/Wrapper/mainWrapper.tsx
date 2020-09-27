@@ -13,6 +13,9 @@ const StyleForm = styled.section<Pick<mainWrapperProps, "width" | "height">>`
   width: 470px;
   height: 767px;
   position: absolute;
+    top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
   border: solid thin;
   background : ${(props) => props.theme.main.background}
 `;

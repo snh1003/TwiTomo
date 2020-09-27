@@ -1,16 +1,14 @@
 import React from "react";
 import MainWrapper from "../../UI/Wrapper/mainWrapper";
-import TopWrapper from "../../UI/Wrapper/TopWrapper";
-import MiddleWrapper from "../../UI/Wrapper/MiddleWrapper";
-import FeedCard from "../../UI/FeedCard";
-import BottomWrapper from "../../UI/Wrapper/BottomWrapper";
+import YanawaButton from "../../UI/Button";
+import TitleLogo from "../../UI/TitleLogo";
+
 
 const MainTitle = () => {
     return (
         <MainWrapper>
-            <TopWrapper>df</TopWrapper>
-            <MiddleWrapper> </MiddleWrapper>
-            <BottomWrapper></BottomWrapper>
+            <TitleLogo/>
+           <YanawaButton>Start!</YanawaButton>
         </MainWrapper>
     );
 };
