@@ -3,6 +3,7 @@ import { Link, Route, BrowserRouter, Switch } from "react-router-dom";
 
 import FeedComponent from "./Component/FeedComponent";
 import MainTitle from "./Component/MainTitle";
+import CreateForm from "./Component/CreateForm";
 const App = () => {
     const fakedata = {
         date: "1990-90-90",
@@ -14,7 +15,8 @@ const App = () => {
             <BrowserRouter>
             <Switch>
                 <Route path='/Feed' component={FeedComponent}/>
-                <Route path='/' component={MainTitle}/>
+                <Route path='/' exact component={MainTitle}/>
+                <Route path='/Form' component={CreateForm}/>
             </Switch>
             </BrowserRouter>
         </>

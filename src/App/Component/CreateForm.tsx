@@ -3,6 +3,7 @@ import MainWrapper from "../../UI/Wrapper/mainWrapper";
 import MiddleWrapper from "../../UI/Wrapper/MiddleWrapper";
 import BottomWrapper from "../../UI/Wrapper/BottomWrapper";
 import InputBox from "../../UI/InputBox";
+import ImageInputBox from "../../UI/ImageInput";
 
 interface Images {
     file:Blob | null,
@@ -39,9 +40,7 @@ const CreateForm = () => {
     return (
         <MainWrapper>
             <MiddleWrapper>
-                <img src = {image.Preview}/>
                 <div
-                    className="area"
                     data-drag={isDrag}
                     onDragEnter={e => {dragState(e, true)}}
                     onDragLeave={e => {dragState(e, false)}}
@@ -51,17 +50,7 @@ const CreateForm = () => {
                         handleChangeFile(e.dataTransfer.files);
                     }}
                 >
-                    <p>Drag and Drop</p>
-                    <span> or</span>
-                    <label>
-                        file select
-                        <input
-                            type="file"
-                            accept="image/*"
-                            multiple
-                            onChange={e => handleChangeFile(e.target.files)}
-                        />
-                    </label>
+                    <ImageInputBox Preview={image.Preview} onChange={e => handleChangeFile(e.target.files)}/>
                 </div>
                 <InputBox margin="10px"></InputBox> 
                 <InputBox margin="10px"></InputBox>
