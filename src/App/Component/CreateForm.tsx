@@ -34,9 +34,13 @@ const CreateForm = () => {
             reader.onloadend = () => {
                 resolve(reader)
             };
-            reader.readAsDataURL(data)
+            data ? reader.readAsDataURL(data) : reject()
         })
     }
+
+    const clear = () => {
+        setImage({file: null, Preview:''});
+    };
     return (
         <MainWrapper>
             <MiddleWrapper>
@@ -50,7 +54,7 @@ const CreateForm = () => {
                         handleChangeFile(e.dataTransfer.files);
                     }}
                 >
-                    <ImageInputBox Preview={image.Preview} onChange={e => handleChangeFile(e.target.files)}/>
+                    <ImageInputBox preview={image.Preview} onChange={e => handleChangeFile(e.target.files)} clear={clear}/>
                 </div>
                 <InputBox margin="10px"></InputBox> 
                 <InputBox margin="10px"></InputBox>
