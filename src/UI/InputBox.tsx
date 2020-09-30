@@ -27,7 +27,7 @@ display: inline;
 
 const InputBox: React.FC<InputBoxProps> = ({ value,width,height,borderRadius,margin,Type }) => {
     return (
-        <StyledInput margin={margin}></StyledInput>
+        <StyledInput width = {width} height = {height} margin={margin}></StyledInput>
     );
 };
 

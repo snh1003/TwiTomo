@@ -10,17 +10,14 @@ interface ImageInputProps {
 
 const StyledCard = styled.div`
 text-align: center;
-height: 200px;
+height: 170px;
+margin: 15px;
 `;
 
 const StyledImg = styled.img`
- outline: none !important;
- border: none !important;
+
 `
-const StyledSpace = styled.div`
-width: 70%;
-height: 70%;
-`
+
 const StyledMinus = styled(MinusCircle)`
 color: blue;
 position: absolute;
@@ -44,7 +41,6 @@ const ImageInputBox: React.FC<ImageInputProps> = ({preview,onChange, clear
                 onChange={onChange}
                 />
                 </label></>}
-
         </StyledCard>
     );
 };
