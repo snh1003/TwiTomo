@@ -4,6 +4,7 @@ import MiddleWrapper from "../../UI/Wrapper/MiddleWrapper";
 import BottomWrapper from "../../UI/Wrapper/BottomWrapper";
 import InputBox from "../../UI/InputBox";
 import ImageInputBox from "../../UI/ImageInput";
+import TextAreaBox from "../../UI/TextAreaBox";
 
 interface Images {
     file:Blob | null,
@@ -56,10 +57,19 @@ const CreateForm = () => {
                 >
                     <ImageInputBox preview={image.Preview} onChange={e => handleChangeFile(e.target.files)} clear={clear}/>
                 </div>
-                <InputBox margin="10px"></InputBox> 
+                <InputBox height = "50px" margin="10px"></InputBox>
+                <text>hosting</text>
+                <h2>tag</h2>
                 <InputBox margin="10px"></InputBox>
                 <InputBox margin="10px"></InputBox>
                 <InputBox margin="10px"></InputBox>
+                <InputBox margin="10px"></InputBox>
+                <h2>title</h2>
+                <TextAreaBox></TextAreaBox>
+
+
+
+
             </MiddleWrapper>
             <BottomWrapper></BottomWrapper>
         </MainWrapper>

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-interface InputBoxProps {
+interface TextAreaProps {
     value?: string;
     width?: string;
     height?: string;
@@ -10,25 +10,28 @@ interface InputBoxProps {
     Type?: string;
 }
 
-const StyledInput = styled.input<
-    Pick<InputBoxProps, "width" | "height" | "borderRadius" | "margin">
+const StyledInput = styled.textarea<
+    Pick<TextAreaProps, "width" | "height" | "borderRadius" | "margin">
     >`
   padding: 1rem;
-  width: ${({ width }) => width};
+  width: 100%;
   height: ${({ height }) => height};
   border-radius: ${({ borderRadius }) => borderRadius};
   margin: ${({ margin }) => margin};
 `;
 
-const StyledBox = styled.article`
-float:left;
-display: inline;
+const StyledBox = styled.div`
+width: 100%;
+height : 100px;
 `
 
-const InputBox: React.FC<InputBoxProps> = ({ value,width,height,borderRadius,margin,Type }) => {
+const TextAreaBox: React.FC<TextAreaProps> = ({ value,width,height,borderRadius,margin,Type }) => {
     return (
+        <StyledBox>
         <StyledInput width = {width} height = {height} margin={margin}></StyledInput>
+            </StyledBox>
     );
 };
 
-export default InputBox;
+export default TextAreaBox;
+
