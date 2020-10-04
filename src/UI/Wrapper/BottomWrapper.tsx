@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Home } from "@styled-icons/boxicons-regular/Home"
-import {Pencil} from "@styled-icons/boxicons-solid/Pencil"
+import { Home } from "@styled-icons/boxicons-regular/Home";
+import { Pencil } from "@styled-icons/boxicons-solid/Pencil";
 
 interface bottomWrapperProps {
   width?: string;
@@ -13,23 +13,25 @@ const StyleForm = styled.article<Pick<bottomWrapperProps, "width" | "height">>`
   flex: 1 0 10%;
   display: flex;
   width: 470px;
-  justify-content : center;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
   background: ${(props) => props.theme.main.base};
-
 `;
 
 const FlexHome = styled(Home)`
-flex : 1;
-color : white;
-`
+  flex: 1;
+  color: white;
+  &:hover {
+    color: gray;
+  }
+`;
 const FlexPencil = styled(Pencil)`
-flex : 1;
-color : white;
-`
-
-
-
+  flex: 1;
+  color: white;
+  &:hover {
+    color: gray;
+  }
+`;
 
 const BottomWrapper: React.FC<bottomWrapperProps> = ({
   width,
@@ -38,7 +40,8 @@ const BottomWrapper: React.FC<bottomWrapperProps> = ({
 }) => {
   return (
     <StyleForm width={width} height={height}>
-      <FlexHome size = "45"/><FlexPencil size = "45"/>
+      <FlexHome size="45" />
+      <FlexPencil size="45" />
     </StyleForm>
   );
 };
