@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import TagBox from "../../../../Downloads/Tag";
+import TagBox from "./Tag";
+
 
 interface FeedCardProps {
   width?: string;
@@ -31,7 +32,7 @@ const StyledCard = styled.article<
     box-shadow: 0 0.8px 5px gray;
   }
   &:active {
-    box-shadow: inset 0 1px;
+    box-shadow: inset 0 1px gray;
   }
 `;
 

@@ -55,7 +55,7 @@ const FeedComponent = () => {
               title={value.title}
               tag={value.tag}
               dday={value.dday}
-            ></FeedCard>
+            />
           );
         })}
       </MiddleWrapper>

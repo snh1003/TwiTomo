@@ -7,6 +7,7 @@ interface bottomWrapperProps {
   width?: string;
   height?: string;
   type?: string;
+  fnc?: () => void;
 }
 
 const StyleForm = styled.article<Pick<bottomWrapperProps, "width" | "height">>`
@@ -25,8 +26,14 @@ const FlexHome = styled(Home)`
     color: gray;
   }
 `;
-const FlexPencil = styled(Pencil)`
+
+const FlexButton = styled.button`
   flex: 1;
+   background-color:transparent;
+   border:0px transparent solid;
+   outline : 0;
+`
+const FlexPencil = styled(Pencil)`
   color: white;
   &:hover {
     color: gray;
@@ -36,12 +43,12 @@ const FlexPencil = styled(Pencil)`
 const BottomWrapper: React.FC<bottomWrapperProps> = ({
   width,
   height,
-  type,
+  type,fnc
 }) => {
   return (
     <StyleForm width={width} height={height}>
-      <FlexHome size="45" />
-      <FlexPencil size="45" />
+      <FlexHome size="45" onClick = {()=> alert('haha')}/>
+      <FlexButton type="submit"><FlexPencil size="45" onClick = {fnc} /></FlexButton>
     </StyleForm>
   );
 };
