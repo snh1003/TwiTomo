@@ -8,6 +8,9 @@ interface InputBoxProps {
   borderRadius?: string;
   margin?: string;
   Type?: string;
+  name?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const StyledInput = styled.input<
@@ -33,9 +36,18 @@ const InputBox: React.FC<InputBoxProps> = ({
   borderRadius,
   margin,
   Type,
+  onChange,
+  onKeyPress,
 }) => {
   return (
-    <StyledInput width={width} height={height} margin={margin}></StyledInput>
+    <StyledInput
+      placeholder="kim"
+      width={width}
+      height={height}
+      margin={margin}
+      onChange={onChange}
+      onKeyPress={onKeyPress}
+    />
   );
 };
 
