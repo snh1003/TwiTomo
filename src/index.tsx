@@ -6,13 +6,16 @@ import App from './App/App';
 import GlobalStyle from './GlobalStyle';
 import { ThemeProvider } from 'styled-components';
 import theme from './theme';
+import { ModalProvider } from 'styled-react-modal'
 
 ReactDOM.render(
     <>
         <GlobalStyle />
         <ThemeProvider theme={theme}>
         <React.StrictMode>
+            <ModalProvider>
             <App />
+            </ModalProvider>
         </React.StrictMode>
         </ThemeProvider>
     </>,

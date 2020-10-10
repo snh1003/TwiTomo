@@ -44,9 +44,15 @@ const StyledMenu = styled.div`
   font-size: 20px;
   align-self: end;
   text-align: center;
-  margin-bottom: 10px;
+  margin: 0 30px 10px 30px;
+  border-radius: 30px;
+  &:hover {
+    background: gray;
+  }
+  &:active {
+    background: white;
+  }
 `;
-
 const StyledImage = styled.img`
   width: 85px;
   height: 85px;
@@ -54,6 +60,13 @@ const StyledImage = styled.img`
 `;
 const StyledSetting = styled(Settings)`
   margin-left: 20px;
+  &:hover {
+    color: gray;
+  }
+
+  &:active {
+    color: white;
+  }
 `;
 
 const TopWrapper: React.FC<TopWrapperProps> = ({ children, type }) => {
