@@ -1,19 +1,44 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import MainWrapper from "../../UI/Wrapper/mainWrapper";
 import MiddleWrapper from "../../UI/Wrapper/MiddleWrapper";
 import BottomWrapper from "../../UI/Wrapper/BottomWrapper";
 import InputBox from "../../UI/InputBox";
 import ImageInputBox from "../../UI/ImageInput";
 import TextAreaBox from "../../UI/TextAreaBox";
+import { Feed } from "../../ContextProvider";
+import Modal from "styled-react-modal";
+import TagInput from "../../UI/TagInput";
+import TagBox from "../../UI/Tag";
+import TagWrapper from "../../UI/Wrapper/TagWrapper";
 
 interface Images {
   file: Blob | null;
   Preview: string;
 }
+type FeedForm = Partial<Feed>;
+
+const StyledModal = Modal.styled`
+  width: 20rem;
+  height: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;`;
 
 const CreateForm = () => {
+  const [form, setForm] = React.useState<FeedForm>({
+    title: "",
+    name: "",
+    tag: [],
+    location: "",
+    day: "",
+    money: 0,
+    people: 0,
+    content: "",
+  });
   const [isDrag, setIsDrag] = React.useState(false);
   const [image, setImage] = React.useState<Images>({ file: null, Preview: "" });
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const [tagStorage, setTagStorage] = React.useState<string>("");
   const dragState = (e: any, state: boolean) => {
     e.preventDefault();
     setIsDrag(state);
@@ -41,43 +66,84 @@ const CreateForm = () => {
   const clear = () => {
     setImage({ file: null, Preview: "" });
   };
+
+  const handleChange = (input: string) => (
+    e: ChangeEvent<HTMLInputElement>
+  ) => {
+    input === "tag"
+      ? setTagStorage(e.target.value)
+      : setForm({ ...form, [input]: e.target.value });
+  };
+
+  const makeFeed = () => {};
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      setForm({ ...form, tag: form.tag?.concat(tagStorage) });
+      toggleModal();
+    }
+  };
   return (
-    <MainWrapper>
-      <MiddleWrapper>
-        <div
-          data-drag={isDrag}
-          onDragEnter={(e) => {
-            dragState(e, true);
-          }}
-          onDragLeave={(e) => {
-            dragState(e, false);
-          }}
-          onDragOver={(e) => {
-            dragState(e, true);
-          }}
-          onDrop={(e) => {
-            dragState(e, false);
-            handleChangeFile(e.dataTransfer.files);
-          }}
-        >
-          <ImageInputBox
-            preview={image.Preview}
-            onChange={(e) => handleChangeFile(e.target.files)}
-            clear={clear}
-          />
-        </div>
-        <InputBox height="50px" margin="10px"></InputBox>
-        <text>hosting</text>
-        <h2>tag</h2>
-        <InputBox margin="10px"></InputBox>
-        <InputBox margin="10px"></InputBox>
-        <InputBox margin="10px"></InputBox>
-        <InputBox margin="10px"></InputBox>
-        <h2>title</h2>
-        <TextAreaBox></TextAreaBox>
-      </MiddleWrapper>
-      <BottomWrapper></BottomWrapper>
-    </MainWrapper>
+    <form onSubmit={makeFeed}>
+      <MainWrapper>
+        <MiddleWrapper>
+          <div
+            data-drag={isDrag}
+            onDragEnter={(e) => {
+              dragState(e, true);
+            }}
+            onDragLeave={(e) => {
+              dragState(e, false);
+            }}
+            onDragOver={(e) => {
+              dragState(e, true);
+            }}
+            onDrop={(e) => {
+              dragState(e, false);
+              handleChangeFile(e.dataTransfer.files);
+            }}
+          >
+            <ImageInputBox
+              preview={image.Preview}
+              onChange={(e) => handleChangeFile(e.target.files)}
+              clear={clear}
+            />
+          </div>
+          <InputBox height="50px" margin="10px" />
+          <h2>hosting</h2>
+          <TagWrapper>
+            {form.tag?.map((value, index) => (
+              <TagBox key={index}>{value}</TagBox>
+            ))}
+            {(form.tag?.length as number) <= 2 ? (
+              <TagInput onClick={toggleModal} />
+            ) : (
+              <></>
+            )}
+          </TagWrapper>
+          <StyledModal
+            isOpen={isOpen}
+            onBackgroundClick={toggleModal}
+            onEscapeKeydown={toggleModal}
+          >
+            <InputBox
+              onKeyPress={handleKeyPress}
+              onChange={handleChange("tag")}
+            />
+          </StyledModal>
+          <InputBox margin="10px" onChange={handleChange("name")} />
+          <InputBox margin="10px"></InputBox>
+          <InputBox margin="10px"></InputBox>
+          <InputBox margin="10px"></InputBox>
+          <h2>모임 내용</h2>
+          <TextAreaBox></TextAreaBox>
+        </MiddleWrapper>
+        <BottomWrapper></BottomWrapper>
+      </MainWrapper>
+    </form>
   );
 };
 
