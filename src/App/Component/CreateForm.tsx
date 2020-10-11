@@ -10,6 +10,7 @@ import Modal from "styled-react-modal";
 import TagInput from "../../UI/TagInput";
 import TagBox from "../../UI/Tag";
 import TagWrapper from "../../UI/Wrapper/TagWrapper";
+import axios from "axios";
 
 interface Images {
   file: Blob | null;
@@ -73,9 +74,28 @@ const CreateForm = () => {
     input === "tag"
       ? setTagStorage(e.target.value)
       : setForm({ ...form, [input]: e.target.value });
+
+    console.log(form);
   };
 
-  const makeFeed = () => {};
+  const makeFeed = async () => {
+    const formData = new FormData();
+    formData.append("title", form.title as string);
+    form.tag?.forEach((value) => formData.append("tag", value));
+    formData.append("location", form.location as string);
+    formData.append("day", form.day as string);
+    formData.append("money", form.money as string);
+    formData.append("people", form.people as string);
+    formData.append("content", form.title as string);
+    try {
+      const response = await axios.post(
+        "https://jsonplaceholder.typicode.com/users"
+      );
+      // dispatch({ type: "SUCCESS", data: response.data });
+    } catch (e) {
+      // dispatch({ type: "ERROR", error: e });
+    }
+  };
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
@@ -112,8 +132,15 @@ const CreateForm = () => {
               clear={clear}
             />
           </div>
-          <InputBox height="50px" margin="10px" />
-          <h2>hosting</h2>
+          <InputBox
+            height="50px"
+            margin="10px"
+            fontsize="30px"
+            padding="60px"
+            placeholder={"title"}
+            onChange={handleChange("title")}
+          />
+          <h2 style={{ textAlign: "center" }}>hosting</h2>
           <TagWrapper>
             {form.tag?.map((value, index) => (
               <TagBox key={index}>{value}</TagBox>
@@ -131,17 +158,38 @@ const CreateForm = () => {
           >
             <InputBox
               onKeyPress={handleKeyPress}
+              padding="16px"
               onChange={handleChange("tag")}
             />
           </StyledModal>
-          <InputBox margin="10px" onChange={handleChange("name")} />
-          <InputBox margin="10px"></InputBox>
-          <InputBox margin="10px"></InputBox>
-          <InputBox margin="10px"></InputBox>
-          <h2>모임 내용</h2>
-          <TextAreaBox></TextAreaBox>
+          <InputBox
+            margin="10px"
+            padding="16px"
+            placeholder={"location"}
+            onChange={handleChange("location")}
+          />
+          <InputBox
+            padding="16px"
+            margin="10px"
+            placeholder={"day"}
+            onChange={handleChange("day")}
+          />
+          <InputBox
+            padding="16px"
+            margin="10px"
+            placeholder={"money"}
+            onChange={handleChange("money")}
+          />
+          <InputBox
+            padding="16px"
+            margin="10px"
+            placeholder={"people"}
+            onChange={handleChange("people")}
+          />
+          <h2 style={{ textAlign: "center" }}> 모임정보</h2>
+          <TextAreaBox onChange={handleChange("content")} />
         </MiddleWrapper>
-        <BottomWrapper></BottomWrapper>
+        <BottomWrapper />
       </MainWrapper>
     </form>
   );
