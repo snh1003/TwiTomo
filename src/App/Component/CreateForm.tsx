@@ -11,6 +11,7 @@ import TagInput from "../../UI/TagInput";
 import TagBox from "../../UI/Tag";
 import TagWrapper from "../../UI/Wrapper/TagWrapper";
 import axios from "axios";
+import { log } from "util";
 
 interface Images {
   file: Blob | null;
@@ -32,8 +33,8 @@ const CreateForm = () => {
     tag: [],
     location: "",
     day: "",
-    money: 0,
-    people: 0,
+    money: "0",
+    people: "0",
     content: "",
   });
   const [isDrag, setIsDrag] = React.useState(false);
@@ -78,7 +79,8 @@ const CreateForm = () => {
     console.log(form);
   };
 
-  const makeFeed = async () => {
+  const makeFeed = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     const formData = new FormData();
     formData.append("title", form.title as string);
     form.tag?.forEach((value) => formData.append("tag", value));
@@ -88,11 +90,14 @@ const CreateForm = () => {
     formData.append("people", form.people as string);
     formData.append("content", form.title as string);
     try {
-      const response = await axios.post(
-        "https://jsonplaceholder.typicode.com/users"
-      );
+      const response = await axios
+        .post(" http://localhost:4000/", formData, {
+          headers: { "content-type": "multipart/form-data" },
+        })
+        .then((res) => console.log(res));
       // dispatch({ type: "SUCCESS", data: response.data });
     } catch (e) {
+      console.log(e);
       // dispatch({ type: "ERROR", error: e });
     }
   };

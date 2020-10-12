@@ -6,8 +6,8 @@ export interface Feed {
   tag: string[];
   location: string;
   day: string;
-  money: number;
-  people: number;
+  money: string;
+  people: string;
   content: string;
   photo: Blob | null;
 }
