@@ -83,12 +83,12 @@ const CreateForm = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("title", form.title as string);
-    form.tag?.forEach((value) => formData.append("tag", value));
     formData.append("location", form.location as string);
     formData.append("day", form.day as string);
     formData.append("money", form.money as string);
     formData.append("people", form.people as string);
     formData.append("content", form.title as string);
+    form.tag?.forEach((value) => formData.append("tag", value));
     try {
       const response = await axios
         .post(" http://localhost:4000/", formData, {

@@ -6,7 +6,7 @@ interface TitleBarProps {
 }
 
 const StyledTitleBar = styled.div`
-font-weight: bold;
+font-weight: bold; 
     font-size: 14px;
     color: #fff;
     background: #4ba1e4;
