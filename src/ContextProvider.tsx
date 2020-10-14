@@ -11,27 +11,39 @@ export interface Feed {
   content: string;
   photo: Blob | null;
 }
-//
-// interface Action {
-// {type: }
-// }
-//
-//
-// const feedReducer = (state: Feed, action) => {
-//     switch (action.type) {
-//         case 'fetchData':
-//             return { ...state, data };
-//         default:
-//             throw new Error(`Unhandled action type: ${action.type}`);
-//     }
-// }
 
-// const feedContext = createContext<Feed | null>(null);
+interface FeedState {
+  fetch: boolean;
+  data?: Feed[];
+}
+
+interface Action {
+  type: "fetching" | "successFetch" | "errorFetch" | "";
+  data?: Feed[];
+  error?: string;
+}
+
+const feedReducer = (state: FeedState, action: Action) => {
+  switch (action.type) {
+    case "fetching":
+      return { fetch: true, data: null, error: null };
+    case "successFetch":
+      return { fetch: false, data: action.data, error: null };
+    case "errorFetch":
+      return { fetch: false, data: null, error: action.error };
+    default:
+      throw new Error(`Unhandle: ${action.type}`);
+  }
+};
+
+const feedContext = createContext<Feed | null>(null);
 
 export const ContextProvider: React.FC = (children: React.ReactNode) => {
-  // const [feed, dispatch] = useReducer(feedReducer, initialTodos);
-  return (
-    // <feedContext.Provider value = {feed}></feedContext.Provider>
-    <div>dsf</div>
-  );
+  const [feed, dispatch] = useReducer(feedReducer, {
+    type: "",
+    fetch: false,
+    data: null,
+    error: null,
+  });
+  return <feedContext.Provider value={feed}> {children}</feedContext.Provider>;
 };
