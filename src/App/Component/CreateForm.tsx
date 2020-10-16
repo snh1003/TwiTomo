@@ -142,7 +142,7 @@ const CreateForm = () => {
             margin="10px"
             fontsize="30px"
             padding="60px"
-            placeholder={"title"}
+            placeholder={"titl"}
             onChange={handleChange("title")}
           />
           <h2 style={{ textAlign: "center" }}>hosting</h2>
