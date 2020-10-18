@@ -11,7 +11,6 @@ import TagInput from "../../UI/TagInput";
 import TagBox from "../../UI/Tag";
 import TagWrapper from "../../UI/Wrapper/TagWrapper";
 import axios from "axios";
-import { log } from "util";
 
 interface Images {
   file: Blob | null;
