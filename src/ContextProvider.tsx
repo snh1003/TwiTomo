@@ -42,7 +42,11 @@ const feedReducer = (state: FeedState, action: Action): FeedState => {
 const feedContext = createContext<FeedState | null>(null);
 const DispatchContext = createContext<Dispathcer | null>(null);
 
-export const ContextProvider: React.FC = (children: React.ReactNode) => {
+export const ContextProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [feed, dispatch] = useReducer(feedReducer, {
     fetch: true,
     data: null,
