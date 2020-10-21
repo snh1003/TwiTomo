@@ -16,6 +16,7 @@ interface Images {
   file: Blob | null;
   Preview: string;
 }
+
 type FeedForm = Partial<Feed>;
 
 const StyledModal = Modal.styled`
@@ -80,20 +81,24 @@ const CreateForm = () => {
 
   const makeFeed = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("title", form.title as string);
-    formData.append("location", form.location as string);
-    formData.append("day", form.day as string);
-    formData.append("money", form.money as string);
-    formData.append("people", form.people as string);
-    formData.append("content", form.title as string);
-    form.tag?.forEach((value) => formData.append("tag", value));
+    const forms = new FormData();
+    forms.append("title", form.title as string);
+    forms.append("location", form.location as string);
+    forms.append("day", form.day as string);
+    forms.append("money", form.money as string);
+    forms.append("people", form.people as string);
+    forms.append("content", form.title as string);
+    form.tag?.forEach((value) => forms.append("tag", value));
+    // @ts-ignore
+    for (const value of forms.values()) {
+      console.log("value" + value);
+    }
     try {
-      const response = await axios
-        .post(" http://localhost:4000/", formData, {
+      await axios
+        .post(" http://localhost:4000/", forms, {
           headers: { "content-type": "multipart/form-data" },
         })
-        .then((res) => console.log(res));
+        .then((res) => console.log("res" + res));
       // dispatch({ type: "SUCCESS", data: response.data });
     } catch (e) {
       console.log(e);
@@ -106,7 +111,7 @@ const CreateForm = () => {
   };
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      setForm({ ...form, tag: form.tag?.concat(tagStorage) });
+      setForm({ ...form, tag: form.tag?.concat("{" + tagStorage + "}") });
       toggleModal();
     }
   };
@@ -173,9 +178,11 @@ const CreateForm = () => {
             onChange={handleChange("location")}
           />
           <InputBox
-            padding="16px"
+            padding="23px"
             margin="10px"
-            placeholder={"day"}
+            type="date"
+            min="2018-01-01"
+            max="2018-12-31"
             onChange={handleChange("day")}
           />
           <InputBox

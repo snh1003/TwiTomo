@@ -11,6 +11,10 @@ interface InputBoxProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   placeholder?: string;
+  type?: string;
+  value?: string;
+  min?: string;
+  max?: string;
 }
 
 const StyledInput = styled.input<
@@ -39,9 +43,15 @@ const InputBox: React.FC<InputBoxProps> = ({
   onChange,
   onKeyPress,
   placeholder,
+  type,
+  min,
+  max,
 }) => {
   return (
     <StyledInput
+      type={type}
+      min={min}
+      max={max}
       placeholder={placeholder}
       padding={padding}
       fontsize={fontsize}

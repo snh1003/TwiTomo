@@ -11,16 +11,16 @@ import { ContextProvider } from "./ContextProvider";
 
 ReactDOM.render(
   <>
-    <ContextProvider>
-      <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <React.StrictMode>
+    <GlobalStyle />
+    <ThemeProvider theme={theme}>
+      <React.StrictMode>
+        <ContextProvider>
           <ModalProvider>
             <App />
           </ModalProvider>
-        </React.StrictMode>
-      </ThemeProvider>
-    </ContextProvider>
+        </ContextProvider>
+      </React.StrictMode>
+    </ThemeProvider>
   </>,
   document.getElementById("root")
 );
