@@ -98,7 +98,7 @@ const CreateForm = () => {
         .post(" http://localhost:4000/", forms, {
           headers: { "content-type": "multipart/form-data" },
         })
-        .then((res) => console.log(res));
+        .then((res) => console.log("res" + res));
       // dispatch({ type: "SUCCESS", data: response.data });
     } catch (e) {
       console.log(e);

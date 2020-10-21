@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MainWrapper from "../../UI/Wrapper/mainWrapper";
 import TopWrapper from "../../UI/Wrapper/TopWrapper";
 import MiddleWrapper from "../../UI/Wrapper/MiddleWrapper";
 import FeedCard from "../../UI/FeedCard";
 import BottomWrapper from "../../UI/Wrapper/BottomWrapper";
+import axios from "axios";
 
 const FeedComponent = () => {
   const fakeData = [
@@ -44,10 +45,35 @@ const FeedComponent = () => {
       dday: 3,
     },
   ];
+
+  const getParameterByName = (name: string) => {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    const regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+      results = regex.exec(window.location.search);
+    return results == null
+      ? ""
+      : decodeURIComponent(results[1].replace(/\+/g, " "));
+  };
+
+  const getToken = async () => {
+    const tokenCode = getParameterByName("code");
+    console.log(tokenCode);
+    await axios
+      .post("https://api.instagram.com/oauth/access_token", {
+        client_id: "884820475384123",
+        client_secret: "df63c18525f145a62ed77e965e152c25",
+        code: tokenCode,
+        grant_type: "authorization_code",
+        redirect_uri: "https://localhost:3000/form",
+      })
+      .then((res) => console.log("res" + res));
+  };
+
   return (
     <MainWrapper>
       <TopWrapper>df</TopWrapper>
       <MiddleWrapper>
+        <button onClick={getToken}>haha</button>
         {fakeData.map((value) => {
           return (
             <FeedCard
