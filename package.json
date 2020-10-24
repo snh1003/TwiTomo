@@ -28,7 +28,6 @@
     "styled-react-modal": "^2.0.1",
     "typescript": "~3.7.2"
   },
-  "proxy": "https://api.instagram.com",
   "scripts": {
     "start": "HTTPS=true SSL_CRT_FILE=./certs/localhost+1.pem SSL_KEY_FILE=./certs/localhost+1-key.pem react-scripts start",
     "build": "react-scripts build",

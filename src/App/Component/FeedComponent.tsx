@@ -60,11 +60,12 @@ const FeedComponent = () => {
     const formdata = new URLSearchParams();
     formdata.append("client_id", "884820475384123");
     formdata.append("client_secret", "df63c18525f145a62ed77e965e152c25");
-    formdata.append("code", tokenCode);
     formdata.append("grant_type", "authorization_code");
-    formdata.append("redirect_uri", "https://localhost:3000/main");
+    formdata.append("redirect_uri", "https://localhost:3000/feed");
+    formdata.append("code", tokenCode);
+
     await axios
-      .post("/oauth/access_token", formdata)
+      .post("https://api.instagram.com/oauth/access_token", formdata)
       .then((res) => console.log("res" + res));
   };
 
