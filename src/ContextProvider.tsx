@@ -12,15 +12,34 @@ export interface Feed {
   photo: Blob | null;
 }
 
+export interface Profile {
+  picture: string;
+  id: string;
+  name: string;
+}
+
 interface FeedState {
   fetch: boolean;
   data: Feed[] | null;
   error: string | null;
 }
 
+interface ProfileState {
+  fetch: boolean;
+  data: Profile | null;
+  error: string | null;
+}
+
 interface Action {
-  type: "fetching" | "successFetch" | "errorFetch" | "";
-  data: Feed[];
+  type:
+    | "fetching"
+    | "successFetch"
+    | "errorFetch"
+    | ""
+    | "GET_PROFILE"
+    | "GET_PROFILE_SUCCESS"
+    | "GET_PROFILE_ERROR";
+  data: Feed[] | Profile;
   error: string | null;
 }
 
@@ -39,6 +58,20 @@ const feedReducer = (state: FeedState, action: Action): FeedState => {
   }
 };
 
+const profileReducer = (state: ProfileState, action: Action): ProfileState => {
+  switch (action.type) {
+    case "GET_PROFILE":
+      return { ...state, fetch: true };
+    case "GET_PROFILE_SUCCESS":
+      return { ...state, data: action.data };
+    case "GET_PROFILE_ERROR":
+      return { ...state, error: action.error };
+    default:
+      throw new Error(`error ${action.type}`);
+  }
+};
+
+const profileContext = createContext(null);
 const feedContext = createContext<FeedState | null>(null);
 const DispatchContext = createContext<Dispathcer | null>(null);
 

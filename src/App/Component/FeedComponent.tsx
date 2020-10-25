@@ -66,14 +66,17 @@ const FeedComponent = () => {
 
     await axios
       .post("https://api.instagram.com/oauth/access_token", formdata)
-      .then((res) => console.log("res" + res));
+      .then((res) => res.data);
   };
+
+  useEffect(() => {
+    getToken().then((r) => console.log(r));
+  });
 
   return (
     <MainWrapper>
       <TopWrapper>df</TopWrapper>
       <MiddleWrapper>
-        <button onClick={getToken}>haha</button>
         {fakeData.map((value) => {
           return (
             <FeedCard
