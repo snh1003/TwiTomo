@@ -5,8 +5,17 @@ import MiddleWrapper from "../../UI/Wrapper/MiddleWrapper";
 import FeedCard from "../../UI/FeedCard";
 import BottomWrapper from "../../UI/Wrapper/BottomWrapper";
 import axios from "axios";
+import {
+  Dispatcher,
+  Profile,
+  useDispatch,
+  useProfileState,
+} from "../../Context/ProfileContext";
 
 const FeedComponent = () => {
+  const state = useProfileState();
+  const dispatch = useDispatch();
+
   const fakeData = [
     {
       id: 1,
@@ -64,18 +73,39 @@ const FeedComponent = () => {
     formdata.append("redirect_uri", "https://localhost:3000/feed");
     formdata.append("code", tokenCode);
 
-    await axios
-      .post("https://api.instagram.com/oauth/access_token", formdata)
-      .then((res) => res.data);
+    try {
+      const token = await axios
+        .post("https://api.instagram.com/oauth/access_token", formdata)
+        .then((res) => {
+          return JSON.parse(JSON.stringify(res.data.access_token));
+        });
+      return token;
+    } catch (e) {
+      dispatch({ type: "GET_PROFILE_ERROR", error: e });
+    }
+  };
+
+  const getProfile = async (dispatch: Dispatcher, token: string) => {
+    dispatch({ type: "GET_PROFILE" });
+    try {
+      const response = await axios
+        .get(
+          `https://graph.instagram.com/me?fields=id,username&access_token=${token}`
+        )
+        .then((res) => JSON.parse(JSON.stringify(res.data)));
+      dispatch({ type: "GET_PROFILE_SUCCESS", data: response });
+    } catch (e) {
+      dispatch({ type: "GET_PROFILE_ERROR", error: e });
+    }
   };
 
   useEffect(() => {
-    getToken().then((r) => console.log(r));
-  });
+    // getToken().then((r) => getProfile(dispatch, r));
+  }, []);
 
   return (
     <MainWrapper>
-      <TopWrapper>df</TopWrapper>
+      <TopWrapper username={state.data?.username} />
       <MiddleWrapper>
         {fakeData.map((value) => {
           return (
@@ -88,7 +118,7 @@ const FeedComponent = () => {
           );
         })}
       </MiddleWrapper>
-      <BottomWrapper></BottomWrapper>
+      <BottomWrapper />
     </MainWrapper>
   );
 };
