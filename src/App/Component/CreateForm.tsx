@@ -5,7 +5,7 @@ import BottomWrapper from "../../UI/Wrapper/BottomWrapper";
 import InputBox from "../../UI/InputBox";
 import ImageInputBox from "../../UI/ImageInput";
 import TextAreaBox from "../../UI/TextAreaBox";
-import { Feed } from "../../ContextProvider";
+import { Feed, useProfileState } from "../../Context/ProfileContext";
 import Modal from "styled-react-modal";
 import TagInput from "../../UI/TagInput";
 import TagBox from "../../UI/Tag";
@@ -41,6 +41,7 @@ const CreateForm = () => {
   const [image, setImage] = React.useState<Images>({ file: null, Preview: "" });
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
   const [tagStorage, setTagStorage] = React.useState<string>("");
+  const State = useProfileState();
   const dragState = (e: any, state: boolean) => {
     e.preventDefault();
     setIsDrag(state);
@@ -83,19 +84,19 @@ const CreateForm = () => {
     e.preventDefault();
     const forms = new FormData();
     forms.append("title", form.title as string);
+    forms.append("profile", "hahririri");
+    forms.append("name", State.data?.username as string);
     forms.append("location", form.location as string);
     forms.append("day", form.day as string);
     forms.append("money", form.money as string);
     forms.append("people", form.people as string);
     forms.append("content", form.title as string);
+    forms.append("photo", image.file as Blob);
     form.tag?.forEach((value) => forms.append("tag", value));
-    // @ts-ignore
-    for (const value of forms.values()) {
-      console.log("value" + value);
-    }
+
     try {
       await axios
-        .post(" http://localhost:4000/", forms, {
+        .post(" https://localhost:80/", forms, {
           headers: { "content-type": "multipart/form-data" },
         })
         .then((res) => console.log("res" + res));

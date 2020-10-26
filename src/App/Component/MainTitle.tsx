@@ -4,7 +4,7 @@ import YanawaButton from "../../UI/Button";
 import TitleLogo from "../../UI/TitleLogo";
 
 const MainTitle = () => {
-  const clickevent = () => {
+  const clickEvent = () => {
     window.location.href =
       "https://api.instagram.com/oauth/authorize?client_id=884820475384123&redirect_uri=https%3A%2F%2Flocalhost%3A3000%2Ffeed&scope=user_profile,user_media&response_type=code";
   };
@@ -12,8 +12,7 @@ const MainTitle = () => {
   return (
     <MainWrapper>
       <TitleLogo />
-      <YanawaButton>Start!</YanawaButton>
-      <button onClick={clickevent} />
+      <YanawaButton onClick={clickEvent}>Start!</YanawaButton>
     </MainWrapper>
   );
 };

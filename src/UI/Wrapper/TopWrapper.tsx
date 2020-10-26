@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { Settings } from "@styled-icons/feather/Settings";
 
 interface TopWrapperProps {
-  children: React.ReactNode;
   type?: String;
+  username?: string;
 }
 
 const StyleForm = styled.article`
@@ -69,11 +69,11 @@ const StyledSetting = styled(Settings)`
   }
 `;
 
-const TopWrapper: React.FC<TopWrapperProps> = ({ children, type }) => {
+const TopWrapper: React.FC<TopWrapperProps> = ({ type, username }) => {
   return (
     <StyleForm>
       <StyledTop>
-        김 아무개 님 <StyledSetting size={30} />
+        {username} <StyledSetting size={30} />
       </StyledTop>
       <StyledTop>
         <StyledImage src="https://search.pstatic.net/common/?src=http%3A%2F%2Fkinimage.naver.net%2F20160302_296%2F1456919917013yxvPU_PNG%2F%25BB%25E7%25C4%25ED4.png&type=sc960_832" />
