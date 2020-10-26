@@ -7,18 +7,18 @@ import GlobalStyle from "./GlobalStyle";
 import { ThemeProvider } from "styled-components";
 import theme from "./theme";
 import { ModalProvider } from "styled-react-modal";
-import { ContextProvider } from "./ContextProvider";
+import { ProfileContext } from "./Context/ProfileContext";
 
 ReactDOM.render(
   <>
     <GlobalStyle />
     <ThemeProvider theme={theme}>
       <React.StrictMode>
-        <ContextProvider>
+        <ProfileContext>
           <ModalProvider>
             <App />
           </ModalProvider>
-        </ContextProvider>
+        </ProfileContext>
       </React.StrictMode>
     </ThemeProvider>
   </>,
