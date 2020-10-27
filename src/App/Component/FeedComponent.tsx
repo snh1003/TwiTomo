@@ -76,6 +76,10 @@ const FeedComponent = () => {
       });
   };
 
+  const getFeedOne = async (id: string) => {
+    await axios;
+  };
+
   const delayedQuery = React.useCallback(throttle(getFeed, 500), [
     feedData.length,
   ]);

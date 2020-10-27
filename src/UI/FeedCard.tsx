@@ -10,6 +10,7 @@ interface FeedCardProps {
   tag: string[];
   title: string;
   day: string;
+  onClick?: () => void;
 }
 // box-shadow: -5px -5px 20px ${theme.main.bright},
 //   5px 5px 20px ${theme.main.dark};
@@ -59,6 +60,7 @@ const FeedCard: React.FC<FeedCardProps> = ({
   title,
   day,
   tag,
+  onClick,
 }) => {
   return (
     <StyledCard
@@ -66,6 +68,7 @@ const FeedCard: React.FC<FeedCardProps> = ({
       height={height}
       borderRadius={borderRadius}
       margin={margin}
+      onClick={onClick}
     >
       {tag.map((value) => {
         return <TagBox>{value}</TagBox>;

@@ -10,7 +10,7 @@ export interface Feed {
   money: string;
   people: string;
   content: string;
-  photo: Blob | null;
+  photo: string | null;
 }
 
 export interface Profile {

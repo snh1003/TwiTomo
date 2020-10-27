@@ -201,7 +201,7 @@ const CreateForm = () => {
           <h2 style={{ textAlign: "center" }}> 모임정보</h2>
           <TextAreaBox onChange={handleChange("content")} />
         </MiddleWrapper>
-        <BottomWrapper />
+        <BottomWrapper type={true} />
       </MainWrapper>
     </form>
   );

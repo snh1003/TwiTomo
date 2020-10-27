@@ -5,8 +5,9 @@ import { FileEarmarkArrowUpFill } from "@styled-icons/bootstrap/FileEarmarkArrow
 
 interface ImageInputProps {
   preview: string;
-  onChange: (e: any) => void;
-  clear: () => void;
+  onChange?: (e: any) => void;
+  clear?: () => void;
+  disabled?: boolean;
 }
 
 const StyledCard = styled.div`
@@ -14,6 +15,13 @@ const StyledCard = styled.div`
   height: 170px;
   margin: 15px;
   border: dashed;
+`;
+
+const StyledCardDisabled = styled.div`
+  text-align: center;
+  height: 170px;
+  margin: 15px;
+  border: 0;
 `;
 
 const StyledImg = styled.img``;
@@ -35,16 +43,17 @@ const ImageInputBox: React.FC<ImageInputProps> = ({
   preview,
   onChange,
   clear,
+  disabled,
 }) => {
   return (
-    <StyledCard>
+    <>
       {preview ? (
-        <>
+        <StyledCardDisabled>
           <StyledImg src={preview} width="100%" height="100%" />{" "}
-          <StyledMinus onClick={clear} />
-        </>
+          {disabled ? <StyledMinus onClick={clear} /> : <> </>}
+        </StyledCardDisabled>
       ) : (
-        <>
+        <StyledCard>
           <label>
             <input
               type="file"
@@ -54,9 +63,9 @@ const ImageInputBox: React.FC<ImageInputProps> = ({
             />
             <StyledFIleUpload size="110"></StyledFIleUpload>
           </label>
-        </>
+        </StyledCard>
       )}
-    </StyledCard>
+    </>
   );
 };
 
