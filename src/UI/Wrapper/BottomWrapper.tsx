@@ -6,12 +6,12 @@ import { Pencil } from "@styled-icons/boxicons-solid/Pencil";
 interface bottomWrapperProps {
   width?: string;
   height?: string;
-  type?: string;
+  type?: boolean;
   fnc?: () => void;
 }
 
 const StyleForm = styled.article<Pick<bottomWrapperProps, "width" | "height">>`
-  flex: 1 0 10%;
+  flex: 1 0 15%;
   display: flex;
   width: 470px;
   justify-content: center;
@@ -29,10 +29,10 @@ const FlexHome = styled(Home)`
 
 const FlexButton = styled.button`
   flex: 1;
-   background-color:transparent;
-   border:0px transparent solid;
-   outline : 0;
-`
+  background-color: transparent;
+  border: 0px transparent solid;
+  outline: 0;
+`;
 const FlexPencil = styled(Pencil)`
   color: white;
   &:hover {
@@ -43,12 +43,21 @@ const FlexPencil = styled(Pencil)`
 const BottomWrapper: React.FC<bottomWrapperProps> = ({
   width,
   height,
-  type,fnc
+  type,
+  fnc,
 }) => {
   return (
     <StyleForm width={width} height={height}>
-      <FlexHome size="45" onClick = {()=> alert('haha')}/>
-      <FlexButton type="submit"><FlexPencil size="45" onClick = {fnc} /></FlexButton>
+      {type ? (
+        <FlexPencil size="45" onClick={fnc} />
+      ) : (
+        <>
+          <FlexHome size="45" onClick={() => alert("haha")} />
+          <FlexButton type="submit">
+            <FlexPencil size="45" onClick={fnc} />
+          </FlexButton>
+        </>
+      )}
     </StyleForm>
   );
 };

@@ -84,7 +84,7 @@ const CreateForm = () => {
     e.preventDefault();
     const forms = new FormData();
     forms.append("title", form.title as string);
-    forms.append("profile", "hahririri");
+    forms.append("profile", State.data?.id as string);
     forms.append("name", State.data?.username as string);
     forms.append("location", form.location as string);
     forms.append("day", form.day as string);
@@ -92,7 +92,7 @@ const CreateForm = () => {
     forms.append("people", form.people as string);
     forms.append("content", form.title as string);
     forms.append("photo", image.file as Blob);
-    form.tag?.forEach((value) => forms.append("tag", value));
+    form.tag?.forEach((value) => forms.append("tag", "{" + value + "}"));
 
     try {
       await axios
@@ -112,7 +112,7 @@ const CreateForm = () => {
   };
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      setForm({ ...form, tag: form.tag?.concat("{" + tagStorage + "}") });
+      setForm({ ...form, tag: form.tag?.concat(tagStorage) });
       toggleModal();
     }
   };
@@ -201,7 +201,7 @@ const CreateForm = () => {
           <h2 style={{ textAlign: "center" }}> 모임정보</h2>
           <TextAreaBox onChange={handleChange("content")} />
         </MiddleWrapper>
-        <BottomWrapper />
+        <BottomWrapper type={true} />
       </MainWrapper>
     </form>
   );

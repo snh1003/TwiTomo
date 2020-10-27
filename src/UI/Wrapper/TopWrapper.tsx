@@ -11,7 +11,8 @@ const StyleForm = styled.article`
   flex: 2 1 15%;
   width: 470px;
   display: grid;
-  grid-template-rows: 5rem 5rem;
+  align-items: center;
+  grid-template-rows: 5rem 3rem;
   grid-template-columns: repeat(6, 1fr);
 `;
 // &:nth-child(1) {
@@ -23,20 +24,9 @@ const StyleForm = styled.article`
 //   background: yellow;
 // }
 const StyledTop = styled.div`
-  align-self: center;
-  &:nth-child(1) {
-    margin-left: 50px;
-    margin-top: 10px;
-    font-size: 30px;
-    grid-column-start: 1;
-    grid-column-end: 5;
-  }
-  &:nth-child(2) {
-    padding-top: 30px;
-    box-sizing: border-box;
-    grid-column-start: 5;
-    grid-column-end: 6;
-  }
+  place-self: center;
+  font-size: 30px;
+  grid-column: 1 / 7;
 `;
 
 const StyledMenu = styled.div`
@@ -47,10 +37,10 @@ const StyledMenu = styled.div`
   margin: 0 30px 10px 30px;
   border-radius: 30px;
   &:hover {
-    background: gray;
+    color: red;
   }
   &:active {
-    background: white;
+    color: gray;
   }
 `;
 const StyledImage = styled.img`
@@ -75,9 +65,9 @@ const TopWrapper: React.FC<TopWrapperProps> = ({ type, username }) => {
       <StyledTop>
         {username} <StyledSetting size={30} />
       </StyledTop>
-      <StyledTop>
-        <StyledImage src="https://search.pstatic.net/common/?src=http%3A%2F%2Fkinimage.naver.net%2F20160302_296%2F1456919917013yxvPU_PNG%2F%25BB%25E7%25C4%25ED4.png&type=sc960_832" />
-      </StyledTop>
+      {/*<StyledTop>*/}
+      {/*  <StyledImage src="https://search.pstatic.net/common/?src=http%3A%2F%2Fkinimage.naver.net%2F20160302_296%2F1456919917013yxvPU_PNG%2F%25BB%25E7%25C4%25ED4.png&type=sc960_832" />*/}
+      {/*</StyledTop>*/}
       <StyledMenu>새로 올라온 피드</StyledMenu>
       <StyledMenu>참여중피드</StyledMenu>
     </StyleForm>

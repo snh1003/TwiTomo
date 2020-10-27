@@ -9,6 +9,7 @@ interface TextAreaProps {
   margin?: string;
   Type?: string;
   onChange?: any;
+  disabled?: boolean;
 }
 
 const StyledInput = styled.textarea<
@@ -19,6 +20,10 @@ const StyledInput = styled.textarea<
   height: ${({ height }) => height};
   border-radius: ${({ borderRadius }) => borderRadius};
   margin: ${({ margin }) => margin};
+
+  &: disabled {
+    background: white;
+  }
 `;
 
 const StyledBox = styled.div`
@@ -34,6 +39,7 @@ const TextAreaBox: React.FC<TextAreaProps> = ({
   margin,
   Type,
   onChange,
+  disabled,
 }) => {
   return (
     <StyledBox>
@@ -42,6 +48,8 @@ const TextAreaBox: React.FC<TextAreaProps> = ({
         height={height}
         onChange={onChange}
         margin={margin}
+        disabled={disabled}
+        value={value}
       />
     </StyledBox>
   );

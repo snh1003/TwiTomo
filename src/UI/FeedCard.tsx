@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import TagBox from "./Tag";
 
-
 interface FeedCardProps {
   width?: string;
   height?: string;
@@ -10,7 +9,8 @@ interface FeedCardProps {
   margin?: string;
   tag: string[];
   title: string;
-  dday: number;
+  day: string;
+  onClick?: () => void;
 }
 // box-shadow: -5px -5px 20px ${theme.main.bright},
 //   5px 5px 20px ${theme.main.dark};
@@ -58,8 +58,9 @@ const FeedCard: React.FC<FeedCardProps> = ({
   borderRadius,
   margin,
   title,
-  dday,
+  day,
   tag,
+  onClick,
 }) => {
   return (
     <StyledCard
@@ -67,6 +68,7 @@ const FeedCard: React.FC<FeedCardProps> = ({
       height={height}
       borderRadius={borderRadius}
       margin={margin}
+      onClick={onClick}
     >
       {tag.map((value) => {
         return <TagBox>{value}</TagBox>;

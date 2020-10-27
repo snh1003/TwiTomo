@@ -1,6 +1,7 @@
 import React, { createContext, useReducer } from "react";
 
 export interface Feed {
+  id: number | null;
   title: string;
   name: string;
   tag: string[];
@@ -9,7 +10,7 @@ export interface Feed {
   money: string;
   people: string;
   content: string;
-  photo: Blob | null;
+  photo: string | null;
 }
 
 export interface Profile {
