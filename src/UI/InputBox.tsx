@@ -11,10 +11,11 @@ interface InputBoxProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   placeholder?: string;
-  type?: string;
+  disabled?: boolean;
   value?: string;
   min?: string;
   max?: string;
+  type?: string;
 }
 
 const StyledInput = styled.input<
@@ -31,6 +32,10 @@ const StyledInput = styled.input<
   margin-top: ${({ margin }) => margin};
   margin-bottom: ${({ margin }) => margin};
   text-align: center;
+
+  &: disabled {
+    background: white;
+  }
 `;
 
 const InputBox: React.FC<InputBoxProps> = ({
@@ -43,24 +48,30 @@ const InputBox: React.FC<InputBoxProps> = ({
   onChange,
   onKeyPress,
   placeholder,
-  type,
+  disabled,
   min,
   max,
+  value,
+  type,
 }) => {
   return (
-    <StyledInput
-      type={type}
-      min={min}
-      max={max}
-      placeholder={placeholder}
-      padding={padding}
-      fontsize={fontsize}
-      width={width}
-      height={height}
-      margin={margin}
-      onChange={onChange}
-      onKeyPress={onKeyPress}
-    />
+    <>
+      <StyledInput
+        type={type}
+        min={min}
+        max={max}
+        placeholder={placeholder}
+        padding={padding}
+        fontsize={fontsize}
+        width={width}
+        height={height}
+        margin={margin}
+        onChange={onChange}
+        onKeyPress={onKeyPress}
+        value={value}
+        disabled={disabled}
+      />
+    </>
   );
 };
 
