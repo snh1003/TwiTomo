@@ -5,9 +5,12 @@ import MiddleWrapper from "../../UI/Wrapper/MiddleWrapper";
 import FeedCard from "../../UI/FeedCard";
 import BottomWrapper from "../../UI/Wrapper/BottomWrapper";
 import axios from "axios";
+import InfiniteScroll from "react-infinite-scroller";
+import { throttle } from "lodash";
+
 import {
   Dispatcher,
-  Profile,
+  Feed,
   useDispatch,
   useProfileState,
 } from "../../Context/ProfileContext";
@@ -15,45 +18,7 @@ import {
 const FeedComponent = () => {
   const state = useProfileState();
   const dispatch = useDispatch();
-
-  const fakeData = [
-    {
-      id: 1,
-      title: "오프모임",
-      tag: ["kim", "park", "hong"],
-      dday: 3,
-    },
-    {
-      id: 2,
-      title: "오프모임",
-      tag: ["kim", "park", "hong"],
-      dday: 3,
-    },
-    {
-      id: 3,
-      title: "오프모임",
-      tag: ["kim", "park", "hong"],
-      dday: 3,
-    },
-    {
-      id: 4,
-      title: "오프모임",
-      tag: ["kim", "park", "hong"],
-      dday: 3,
-    },
-    {
-      id: 5,
-      title: "오프모임",
-      tag: ["kim", "park", "hong"],
-      dday: 3,
-    },
-    {
-      id: 6,
-      title: "오프모임",
-      tag: ["kim", "park", "hong"],
-      dday: 3,
-    },
-  ];
+  const [feedData, setFeedData] = React.useState<Feed[]>([]);
 
   const getParameterByName = (name: string) => {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -99,24 +64,53 @@ const FeedComponent = () => {
     }
   };
 
+  const getFeed = async () => {
+    await axios
+      .get(`https://localhost:80/?limit=${feedData.length + 10}`)
+      .then((res) => {
+        setFeedData(res.data);
+      })
+      .catch((e) => {
+        console.log(e);
+        throw new Error(e);
+      });
+  };
+
+  const delayedQuery = React.useCallback(throttle(getFeed, 500), [
+    feedData.length,
+  ]);
+
   useEffect(() => {
     // getToken().then((r) => getProfile(dispatch, r));
+    getFeed();
   }, []);
 
   return (
     <MainWrapper>
       <TopWrapper username={state.data?.username} />
       <MiddleWrapper>
-        {fakeData.map((value) => {
-          return (
-            <FeedCard
-              key={value.id}
-              title={value.title}
-              tag={value.tag}
-              dday={value.dday}
-            />
-          );
-        })}
+        <InfiniteScroll
+          pageStart={0}
+          loadMore={delayedQuery}
+          hasMore={true || false}
+          useWindow={false}
+          loader={
+            <div key="loading" className="loader">
+              Loading ...
+            </div>
+          }
+        >
+          {feedData?.map((value) => {
+            return (
+              <FeedCard
+                key={value.id}
+                title={value.title}
+                tag={value.tag}
+                day={value.day}
+              />
+            );
+          })}
+        </InfiniteScroll>
       </MiddleWrapper>
       <BottomWrapper />
     </MainWrapper>
