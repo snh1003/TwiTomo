@@ -81,6 +81,7 @@ const FeedDetail: React.FC<FeedDetailProps> = (props) => {
           disabled={true}
           value={form?.people}
         />
+        haha
         <h2 style={{ textAlign: "center" }}> 모임정보</h2>
         <TextAreaBox disabled={true} value={form?.content} />
       </MiddleWrapper>
