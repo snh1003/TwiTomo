@@ -5,7 +5,7 @@ import BottomWrapper from "../../UI/Wrapper/BottomWrapper";
 import InputBox from "../../UI/InputBox";
 import ImageInputBox from "../../UI/ImageInput";
 import TextAreaBox from "../../UI/TextAreaBox";
-import { Feed, useProfileState } from "../../Context/ProfileContext";
+import { Feed } from "../../Context/ProfileContext";
 import TagBox from "../../UI/Tag";
 import TagWrapper from "../../UI/Wrapper/TagWrapper";
 import { RouteComponentProps } from "react-router-dom";
@@ -37,11 +37,7 @@ const FeedDetail: React.FC<FeedDetailProps> = (props) => {
     <MainWrapper>
       <MiddleWrapper>
         <div>
-          <ImageInputBox
-            preview={
-              "https://localhost:80/20201026140332_2020.10.24%20PC%EA%B2%AC%EC%A0%81.png"
-            }
-          />
+          <ImageInputBox preview={`https://localhost:80/${form?.photo}`} />
         </div>
         <InputBox
           height="50px"

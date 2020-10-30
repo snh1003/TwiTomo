@@ -14,6 +14,7 @@ import {
   useDispatch,
   useProfileState,
 } from "../../Context/ProfileContext";
+import { Link } from "react-router-dom";
 
 const FeedComponent = () => {
   const state = useProfileState();
@@ -76,9 +77,7 @@ const FeedComponent = () => {
       });
   };
 
-  const getFeedOne = async (id: string) => {
-    await axios;
-  };
+  // const getFeedOne = async (id: number) => {};
 
   const delayedQuery = React.useCallback(throttle(getFeed, 500), [
     feedData.length,
@@ -106,12 +105,17 @@ const FeedComponent = () => {
         >
           {feedData?.map((value) => {
             return (
-              <FeedCard
-                key={value.id}
-                title={value.title}
-                tag={value.tag}
-                day={value.day}
-              />
+              <Link
+                to={`/feedDetail/${value.id}`}
+                style={{ textDecoration: "none" }}
+              >
+                <FeedCard
+                  key={value.id}
+                  title={value.title}
+                  tag={value.tag}
+                  day={value.day}
+                />
+              </Link>
             );
           })}
         </InfiniteScroll>

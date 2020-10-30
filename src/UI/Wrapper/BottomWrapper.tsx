@@ -13,10 +13,15 @@ interface bottomWrapperProps {
 const StyleForm = styled.article<Pick<bottomWrapperProps, "width" | "height">>`
   flex: 1 0 15%;
   display: flex;
-  width: 470px;
+  width: ${(props) => props.theme.Platform.mobile};
   justify-content: center;
   align-items: center;
   background: ${(props) => props.theme.main.base};
+
+  @media only screen and (min-width: ${(props) =>
+      props.theme.Platform.desktop}) {
+    width: ${(props) => props.theme.Platform.desktop};
+  }
 `;
 
 const FlexHome = styled(Home)`
