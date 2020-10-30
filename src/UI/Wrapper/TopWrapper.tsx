@@ -9,11 +9,15 @@ interface TopWrapperProps {
 
 const StyleForm = styled.article`
   flex: 2 1 15%;
-  width: 470px;
+  width: ${(props) => props.theme.Platform.mobile};
   display: grid;
   align-items: center;
   grid-template-rows: 5rem 3rem;
   grid-template-columns: repeat(6, 1fr);
+  @media only screen and (min-width: ${(props) =>
+      props.theme.Platform.desktop}) {
+    width: ${(props) => props.theme.Platform.desktop};
+  }
 `;
 // &:nth-child(1) {
 //   grid-column: span 3;

@@ -8,7 +8,7 @@ interface TagWrapperProps {
 const StyleForm = styled.article`
   display: flex;
   flex-direction: row;
-  width: 470px;
+  width: ${(props) => props.theme.Platform.mobile};
   justify-content: flex-start;
 `;
 

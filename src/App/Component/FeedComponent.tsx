@@ -14,6 +14,7 @@ import {
   useDispatch,
   useProfileState,
 } from "../../Context/ProfileContext";
+import { Link } from "react-router-dom";
 
 const FeedComponent = () => {
   const state = useProfileState();
@@ -32,8 +33,11 @@ const FeedComponent = () => {
   const getToken = async () => {
     const tokenCode = getParameterByName("code");
     const formdata = new URLSearchParams();
-    formdata.append("client_id", "884820475384123");
-    formdata.append("client_secret", "df63c18525f145a62ed77e965e152c25");
+    formdata.append("client_id", process.env.REACT_APP_INSTAGRAM_ID as string);
+    formdata.append(
+      "client_secret",
+      process.env.REACT_APP_INSTAGRAM_SECRET as string
+    );
     formdata.append("grant_type", "authorization_code");
     formdata.append("redirect_uri", "https://localhost:3000/feed");
     formdata.append("code", tokenCode);
@@ -76,9 +80,7 @@ const FeedComponent = () => {
       });
   };
 
-  const getFeedOne = async (id: string) => {
-    await axios;
-  };
+  // const getFeedOne = async (id: number) => {};
 
   const delayedQuery = React.useCallback(throttle(getFeed, 500), [
     feedData.length,
@@ -106,12 +108,17 @@ const FeedComponent = () => {
         >
           {feedData?.map((value) => {
             return (
-              <FeedCard
-                key={value.id}
-                title={value.title}
-                tag={value.tag}
-                day={value.day}
-              />
+              <Link
+                to={`/feedDetail/${value.id}`}
+                style={{ textDecoration: "none" }}
+              >
+                <FeedCard
+                  key={value.id}
+                  title={value.title}
+                  tag={value.tag}
+                  day={value.day}
+                />
+              </Link>
             );
           })}
         </InfiniteScroll>

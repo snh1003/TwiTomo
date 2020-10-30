@@ -18,7 +18,6 @@ const StyledCard = styled.article<
   Pick<FeedCardProps, "width" | "height" | "borderRadius" | "margin">
 >`
   display: grid;
-  grid-template-rows: refeat(4, 2fr);
   grid-template-columns: repeat(6, 1fr);
   align-content: center;
   margin: 10px 0 10px 0;
@@ -34,6 +33,11 @@ const StyledCard = styled.article<
   &:active {
     box-shadow: inset 0 1px gray;
   }
+  @media only screen and (min-width: ${(props) =>
+      props.theme.Platform.desktop}) {
+    width: ${(props) => props.theme.Platform.desktop};
+    grid-template-columns: repeat(16, 1fr);
+  }
 `;
 
 const StyledText = styled.text`
@@ -41,12 +45,14 @@ const StyledText = styled.text`
   margin: 4px 0px 0px 45px;
   font-size: 22px;
   color: ${(props) => props.theme.main.base};
+  grid-row: 2 / 3;
 `;
 
 const StyledDate = styled.text`
   grid-column: span 6;
   margin: 4px 0px 0px 14px;
   color: ${(props) => props.theme.main.base};
+  grid-row: 3 / 3;
   &::before {
     content: "D-1 ";
   }
