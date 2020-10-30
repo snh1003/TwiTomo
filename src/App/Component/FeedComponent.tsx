@@ -33,8 +33,11 @@ const FeedComponent = () => {
   const getToken = async () => {
     const tokenCode = getParameterByName("code");
     const formdata = new URLSearchParams();
-    formdata.append("client_id", "884820475384123");
-    formdata.append("client_secret", "df63c18525f145a62ed77e965e152c25");
+    formdata.append("client_id", process.env.REACT_APP_INSTAGRAM_ID as string);
+    formdata.append(
+      "client_secret",
+      process.env.REACT_APP_INSTAGRAM_SECRET as string
+    );
     formdata.append("grant_type", "authorization_code");
     formdata.append("redirect_uri", "https://localhost:3000/feed");
     formdata.append("code", tokenCode);
