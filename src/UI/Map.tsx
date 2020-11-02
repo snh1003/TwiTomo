@@ -3,9 +3,7 @@ import styled from "styled-components";
 
 interface MapContentProps {
   Value: {
-    date: String;
-    title: String;
-    name: String;
+    data: String;
   };
 }
 
@@ -17,7 +15,7 @@ const StyledBox = styled.div`
 const MapBox: React.FC<MapContentProps> = ({ Value }) => {
   return (
     <StyledBox>
-      <h2>{Value.date}</h2>
+      <h2>{Value.data}</h2>
     </StyledBox>
   );
 };
