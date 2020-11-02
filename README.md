@@ -1,4 +1,4 @@
-# Yanawa! (미완 50%)
+# Yanawa! (미완 0.5)
 
 instagram 기반 모임관리 어플리케이션
 
