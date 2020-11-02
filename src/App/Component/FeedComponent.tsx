@@ -21,9 +21,9 @@ const FeedComponent = () => {
   const dispatch = useDispatch();
   const [feedData, setFeedData] = React.useState<Feed[]>([]);
 
-  const getParameterByName = (name: string) => {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    const regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+  const getParameter = (param: string) => {
+    param = param.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    const regex = new RegExp("[\\?&]" + param + "=([^&#]*)"),
       results = regex.exec(window.location.search);
     return results == null
       ? ""
@@ -31,7 +31,7 @@ const FeedComponent = () => {
   };
 
   const getToken = async () => {
-    const tokenCode = getParameterByName("code");
+    const tokenCode = getParameter("code");
     const formdata = new URLSearchParams();
     formdata.append("client_id", process.env.REACT_APP_INSTAGRAM_ID as string);
     formdata.append(
@@ -87,8 +87,8 @@ const FeedComponent = () => {
   ]);
 
   useEffect(() => {
-    // getToken().then((r) => getProfile(dispatch, r));
-    getFeed();
+    getToken().then((r) => getProfile(dispatch, r));
+    // getFeed();
   }, []);
 
   return (
