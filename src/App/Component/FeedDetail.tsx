@@ -24,14 +24,12 @@ const FeedDetail: React.FC<FeedDetailProps> = (props) => {
         setForm(res.data);
       })
       .catch((e) => {
-        console.log(e);
         throw new Error(e);
       });
   };
 
   useEffect(() => {
     getFeedOne();
-    console.log(form);
   }, []);
   return (
     <MainWrapper>
