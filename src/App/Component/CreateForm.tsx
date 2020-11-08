@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from "react";
-import MainWrapper from "../../UI/Wrapper/mainWrapper";
+import MainWrapper from "../../UI/Wrapper/MainWrapper";
 import MiddleWrapper from "../../UI/Wrapper/MiddleWrapper";
 import BottomWrapper from "../../UI/Wrapper/BottomWrapper";
 import InputBox from "../../UI/InputBox";

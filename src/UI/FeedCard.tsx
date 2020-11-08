@@ -20,7 +20,7 @@ const StyledCard = styled.article<
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   align-content: center;
-  margin: 10px 0 10px 0;
+  margin: 10px 0 20px 0;
   box-shadow: 0 3px 5px rgba(0, -1, 0, 0.33);
   width: ${({ width }) => width};
   height: ${({ height }) => height};

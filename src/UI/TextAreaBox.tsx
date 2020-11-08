@@ -20,6 +20,7 @@ const StyledInput = styled.textarea<
   height: ${({ height }) => height};
   border-radius: ${({ borderRadius }) => borderRadius};
   margin: ${({ margin }) => margin};
+  border: none;
 
   &: disabled {
     background: white;

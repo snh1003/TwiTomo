@@ -1,5 +1,5 @@
 import React from "react";
-import MainWrapper from "../../UI/Wrapper/mainWrapper";
+import MainWrapper from "../../UI/Wrapper/MainWrapper";
 import YanawaButton from "../../UI/Button";
 import TitleLogo from "../../UI/TitleLogo";
 
