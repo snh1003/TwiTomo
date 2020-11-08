@@ -32,10 +32,8 @@ const StyledInput = styled.input<
   margin-top: ${({ margin }) => margin};
   margin-bottom: ${({ margin }) => margin};
   text-align: center;
-
-  &: disabled {
-    background: white;
-  }
+  border: none;
+  background: white;
 `;
 
 const InputBox: React.FC<InputBoxProps> = ({

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import MainWrapper from "../../UI/Wrapper/mainWrapper";
+import MainWrapper from "../../UI/Wrapper/MainWrapper";
 import TopWrapper from "../../UI/Wrapper/TopWrapper";
 import MiddleWrapper from "../../UI/Wrapper/MiddleWrapper";
 import FeedCard from "../../UI/FeedCard";
@@ -87,8 +87,8 @@ const FeedComponent = () => {
   ]);
 
   useEffect(() => {
-    getToken().then((r) => getProfile(dispatch, r));
-    // getFeed();
+    // getToken().then((r) => getProfile(dispatch, r));
+    getFeed();
   }, []);
 
   return (

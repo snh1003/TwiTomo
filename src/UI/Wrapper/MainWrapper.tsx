@@ -16,7 +16,7 @@ const StyleForm = styled.section<Pick<mainWrapperProps, "width" | "height">>`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: solid thin;
+  border: groove 2px;
   background: ${(props) => props.theme.main.background};
 
   @media only screen and (min-width: ${(props) =>

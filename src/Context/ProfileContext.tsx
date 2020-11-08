@@ -1,7 +1,7 @@
 import React, { createContext, useReducer } from "react";
 
 export interface Feed {
-  id: number | null;
+  id: number;
   title: string;
   name: string;
   tag: string[];
