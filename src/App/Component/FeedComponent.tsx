@@ -82,7 +82,7 @@ const FeedComponent = () => {
 
   // const getFeedOne = async (id: number) => {};
 
-  const delayedQuery = React.useCallback(throttle(getFeed, 500), [
+  const delayedQuery = React.useCallback(throttle(getFeed, 1500), [
     feedData.length,
   ]);
 
@@ -98,7 +98,7 @@ const FeedComponent = () => {
         <InfiniteScroll
           pageStart={0}
           loadMore={delayedQuery}
-          hasMore={true || false}
+          hasMore={false}
           useWindow={false}
           loader={
             <div key="loading" className="loader">
