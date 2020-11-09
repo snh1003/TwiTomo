@@ -54,7 +54,9 @@ const BottomWrapper: React.FC<bottomWrapperProps> = ({
   return (
     <StyleForm width={width} height={height}>
       {type ? (
-        <FlexPencil size="45" onClick={fnc} />
+        <FlexButton type="submit">
+          <FlexPencil size="45" onClick={fnc} />
+        </FlexButton>
       ) : (
         <>
           <FlexHome size="45" onClick={() => alert("haha")} />
