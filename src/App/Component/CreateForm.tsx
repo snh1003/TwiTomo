@@ -96,7 +96,7 @@ const CreateForm = () => {
 
     try {
       await axios
-        .post(" https://localhost:80/", forms, {
+        .post("https://localhost:80/", forms, {
           headers: { "content-type": "multipart/form-data" },
         })
         .then((res) => console.log("res" + res));
