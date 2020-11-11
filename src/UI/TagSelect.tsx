@@ -25,7 +25,7 @@ const StyledSelect = styled.select<
   margin-bottom: ${({ margin }) => margin};
   place-self: auto center;
   border: none;
-  background: white;
+  background: ${(props) => props.theme.main.background};
   grid-column: span 6;
 `;
 
@@ -46,8 +46,8 @@ const SelectBox: React.FC<InputBoxProps> = ({
         height={height}
         margin={margin}
       >
-        <option>tokyo</option>
-        <option>seoul</option>
+        <option>서울</option>
+        <option>부산</option>
       </StyledSelect>
     </>
   );
