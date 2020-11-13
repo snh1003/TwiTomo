@@ -48,6 +48,9 @@ const SelectBox: React.FC<InputBoxProps> = ({
       >
         <option>서울</option>
         <option>부산</option>
+        <option>인천</option>
+        <option>광주</option>
+        <option>대구</option>
       </StyledSelect>
     </>
   );
