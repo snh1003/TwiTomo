@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-interface InputBoxProps {
+interface SelectBoxProps {
   width?: string;
   height?: string;
   borderRadius?: string;
@@ -12,7 +12,7 @@ interface InputBoxProps {
 
 const StyledSelect = styled.select<
   Pick<
-    InputBoxProps,
+    SelectBoxProps,
     "padding" | "width" | "height" | "borderRadius" | "margin" | "fontsize"
   >
 >`
@@ -29,7 +29,7 @@ const StyledSelect = styled.select<
   grid-column: span 6;
 `;
 
-const SelectBox: React.FC<InputBoxProps> = ({
+const SelectBox: React.FC<SelectBoxProps> = ({
   width,
   height,
   borderRadius,

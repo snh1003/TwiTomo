@@ -15,7 +15,7 @@ import {
   useProfileState,
 } from "../../Context/ProfileContext";
 import { Link } from "react-router-dom";
-import SelectBox from "../../UI/TagSelect";
+import SelectBox from "../../UI/SelectBox";
 
 const FeedComponent = () => {
   const state = useProfileState();
