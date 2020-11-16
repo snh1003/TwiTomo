@@ -11,6 +11,7 @@ import TagInput from "../../UI/TagInput";
 import TagBox from "../../UI/Tag";
 import TagWrapper from "../../UI/Wrapper/TagWrapper";
 import axios from "axios";
+import SelectInputBox from "../../UI/SelectInputBox";
 
 interface Images {
   file: Blob | null;
@@ -71,15 +72,14 @@ const CreateForm = () => {
   };
 
   const handleChange = (input: string) => (
-    e: ChangeEvent<HTMLInputElement>
+    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>
   ) => {
     input === "tag"
       ? setTagStorage(e.target.value)
       : setForm({ ...form, [input]: e.target.value });
-
-    console.log(form);
   };
 
+  const handleSelectChange = () => {};
   const makeFeed = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const forms = new FormData();
@@ -172,10 +172,15 @@ const CreateForm = () => {
               onChange={handleChange("tag")}
             />
           </StyledModal>
-          <InputBox
+          {/*<InputBox*/}
+          {/*  margin="10px"*/}
+          {/*  padding="16px"*/}
+          {/*  placeholder={"location"}*/}
+          {/*  onChange={handleChange("location")}*/}
+          {/*/>*/}
+          <SelectInputBox
             margin="10px"
             padding="16px"
-            placeholder={"location"}
             onChange={handleChange("location")}
           />
           <InputBox
