@@ -8,6 +8,7 @@ interface SelectInputBoxProps {
   fontsize?: string;
   margin?: string;
   padding?: string;
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 const StyledSelect = styled.select<
@@ -23,7 +24,7 @@ const StyledSelect = styled.select<
   border-radius: ${({ borderRadius }) => borderRadius};
   margin-top: ${({ margin }) => margin};
   margin-bottom: ${({ margin }) => margin};
-  text-align: center;
+  text-align-last: center;
   border: none;
   background: white;
 `;
@@ -35,6 +36,7 @@ const SelectInputBox: React.FC<SelectInputBoxProps> = ({
   fontsize,
   padding,
   margin,
+  onChange,
 }) => {
   return (
     <>
@@ -44,7 +46,9 @@ const SelectInputBox: React.FC<SelectInputBoxProps> = ({
         width={width}
         height={height}
         margin={margin}
+        onChange={onChange}
       >
+        <option style={{ display: "none" }}>Location</option>
         <option>서울</option>
         <option>부산</option>
         <option>인천</option>
