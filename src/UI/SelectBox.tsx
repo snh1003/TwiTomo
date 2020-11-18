@@ -8,6 +8,7 @@ interface SelectBoxProps {
   fontsize?: string;
   margin?: string;
   padding?: string;
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 const StyledSelect = styled.select<
@@ -36,6 +37,7 @@ const SelectBox: React.FC<SelectBoxProps> = ({
   fontsize,
   padding,
   margin,
+  onChange,
 }) => {
   return (
     <>
@@ -45,6 +47,7 @@ const SelectBox: React.FC<SelectBoxProps> = ({
         width={width}
         height={height}
         margin={margin}
+        onChange={onChange}
       >
         <option>서울</option>
         <option>부산</option>
