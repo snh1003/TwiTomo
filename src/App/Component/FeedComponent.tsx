@@ -85,6 +85,17 @@ const FeedComponent = () => {
       });
   };
 
+  const getJoinFeed = async () => {
+    await axios
+      .post(`https://localhost:80/join/`, { id: state.data?.id })
+      .then((res) => {
+        setFeedData(res.data);
+      })
+      .catch((e) => {
+        throw new Error(e);
+      });
+  };
+
   const handleLocation = (e: ChangeEvent<HTMLSelectElement>) => {
     setLocation(e.target.value);
   };
