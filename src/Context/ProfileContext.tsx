@@ -71,7 +71,7 @@ const DispatchContext = createContext<Dispatcher | null>(null);
 export const ProfileContext = ({ children }: { children: React.ReactNode }) => {
   const initialArg = {
     fetch: true,
-    data: { id: "kiki", username: "hohoa" },
+    data: { id: "임시", username: "테스트용 이름" },
     error: "",
   };
   const [profile, dispatch] = useReducer(profileReducer, initialArg);
