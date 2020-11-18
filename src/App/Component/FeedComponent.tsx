@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { ChangeEvent, useEffect } from "react";
 import MainWrapper from "../../UI/Wrapper/MainWrapper";
 import TopWrapper from "../../UI/Wrapper/TopWrapper";
 import MiddleWrapper from "../../UI/Wrapper/MiddleWrapper";
@@ -21,6 +21,7 @@ const FeedComponent = () => {
   const state = useProfileState();
   const dispatch = useDispatch();
   const [feedData, setFeedData] = React.useState<Feed[]>([]);
+  const [location, setLocation] = React.useState("");
 
   const getParameter = (param: string) => {
     param = param.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -71,17 +72,22 @@ const FeedComponent = () => {
 
   const getFeed = async () => {
     await axios
-      .get(`https://localhost:80/?limit=${feedData.length + 10}`)
+      .get(
+        `https://localhost:80/location/${location}?limit=${
+          feedData.length + 10
+        }`
+      )
       .then((res) => {
         setFeedData(res.data);
       })
       .catch((e) => {
-        console.log(e);
         throw new Error(e);
       });
   };
 
-  // const getFeedOne = async (id: number) => {};
+  const handleLocation = (e: ChangeEvent<HTMLSelectElement>) => {
+    setLocation(e.target.value);
+  };
 
   const delayedQuery = React.useCallback(throttle(getFeed, 1500), [
     feedData.length,
@@ -94,7 +100,7 @@ const FeedComponent = () => {
 
   return (
     <MainWrapper>
-      <TopWrapper username={state.data?.username} />
+      <TopWrapper username={state.data?.username} onChange={handleLocation} />
       <MiddleWrapper>
         <InfiniteScroll
           pageStart={0}
