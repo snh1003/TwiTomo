@@ -8,6 +8,7 @@ interface TopWrapperProps {
   type?: String;
   username?: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  onClick: () => void;
 }
 
 const StyleForm = styled.article`
@@ -70,6 +71,7 @@ const TopWrapper: React.FC<TopWrapperProps> = ({
   type,
   username,
   onChange,
+  onClick,
 }) => {
   return (
     <StyleForm>
@@ -81,7 +83,7 @@ const TopWrapper: React.FC<TopWrapperProps> = ({
       {/*  <StyledImage src="https://search.pstatic.net/common/?src=http%3A%2F%2Fkinimage.naver.net%2F20160302_296%2F1456919917013yxvPU_PNG%2F%25BB%25E7%25C4%25ED4.png&type=sc960_832" />*/}
       {/*</StyledTop>*/}
       <StyledMenu>새로 올라온 피드</StyledMenu>
-      <StyledMenu>참여중피드</StyledMenu>
+      <StyledMenu onClick={onClick}>참여중피드</StyledMenu>
     </StyleForm>
   );
 };

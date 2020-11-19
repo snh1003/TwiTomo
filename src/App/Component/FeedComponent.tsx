@@ -96,6 +96,10 @@ const FeedComponent = () => {
       });
   };
 
+  const initFeed = () => {
+    setFeedData([]);
+  };
+
   const handleLocation = (e: ChangeEvent<HTMLSelectElement>) => {
     setLocation(e.target.value);
   };
@@ -111,12 +115,17 @@ const FeedComponent = () => {
 
   return (
     <MainWrapper>
-      <TopWrapper username={state.data?.username} onChange={handleLocation} />
+      <TopWrapper
+        username={state.data?.username}
+        onChange={handleLocation}
+        onClick={getJoinFeed}
+      />
       <MiddleWrapper>
+        {/*무한스크롤 구현을 위한 커스텀훅 작성후 삭제 예정*/}
         <InfiniteScroll
           pageStart={0}
           loadMore={delayedQuery}
-          hasMore={false}
+          hasMore={true}
           useWindow={false}
           loader={
             <div key="loading" className="loader">
