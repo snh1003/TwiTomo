@@ -1,7 +1,7 @@
 //색은 미정 테마 칼라 정하고 수정, 아무거나해둠
 const  size = {
   mobile: "480px",
-  desktop: "1281px"
+  tablet: "1281px"
 }
 
 const theme = {
@@ -18,7 +18,7 @@ const theme = {
   },
   Platform: {
     mobile: `${size.mobile}`,
-    desktop: `${size.desktop}`
+    tablet: `${size.tablet}`
   }
 };
 
